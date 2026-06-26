@@ -1,0 +1,98 @@
+<html>
+<html lang="ru">
+<head>
+    <title>The Secret Shop Café | Меню</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">SECRET SHOP <span>CAFÉ</span></div>
+        <nav class="nav">
+            <a href="index.html">Главная</a>
+            <a href="menu.html" class="active">Меню</a>
+            <a href="about.html">О Лавке</a>
+        </nav>
+    </header>
+
+    <section class="menu-section page-padding">
+        <h2 class="section-title">Артефакты и Снадобья</h2>
+        
+       <h3 class="category-title">Напитки (Mana & Health)</h3>
+<div class="grid-container">
+
+            <div class="card" onclick="openModal('modal-lotus')" style="cursor: pointer;">
+                <img src="lotus-brew.jpg" alt="Lotus Brew" class="card-img">
+                <h3>Lotus Fountain Brew</h3>
+                <p>Кликни, чтобы узнать секрет напитка...</p>
+                <span class="price">260 золотых</span>
+            </div>
+
+            <div class="card" onclick="openModal('modal-cheese')" style="cursor: pointer;">
+                <img src="roshan-cheese.jpg" alt="Roshan's Cheese" class="card-img">
+                <h3>Roshan's Cheese</h3>
+                <p>Кликни, чтобы узнать дроп с Рошана...</p>
+                <span class="price">320 золотых</span>
+            </div>
+        </div>
+
+
+        <div id="modal-lotus" class="modal">
+            <div class="modal-content">
+                <span class="close-btn" onclick="closeModal('modal-lotus')">&times;</span>
+                <h2 class="modal-title">Lotus Fountain Brew</h2>
+                <p class="modal-sostav"><strong>Состав:</strong> Эспрессо из кофейных зерен, собранных у Fountain Lotus, сироп из цветов лотоса, взбитое фермерское молоко.</p>
+                <p class="modal-desc">Нежный и освежающий кофейно-цветочный напиток. Зерна для него созревают под брызгами священного фонтана, поэтому каждый глоток одновременно восстанавливает и силы для катки, и ментальное спокойствие.</p>
+                <div class="modal-buff">✨ Особый бафф: Каждые 3 минуты восстанавливает желание учиться.</div>
+            </div>
+        </div>
+
+        <div id="modal-cheese" class="modal">
+            <div class="modal-content">
+                <span class="close-btn" onclick="closeModal('modal-cheese')">&times;</span>
+                <h2 class="modal-title">Roshan's Cheese</h2>
+                <p class="modal-sostav"><strong>Состав:</strong> Сливочный сыр маскарпоне, песочное тесто, топпинг из спелой вишни, сироп «Кровь Рошана».</p>
+                <p class="modal-desc">Легендарный сыр, который выпадает только самым упорным сладкоежкам. Нежный классический чизкейк, политый густым вишневым соусом. За право съесть последний кусочек обычно разворачивается драка 5 на 5.</p>
+                <div class="modal-buff">❤️ Особый бафф: Мгновенно лечит грусть и восстанавливает HP до максимума.</div>
+            </div>
+        </div>
+<h3 class="category-title">Сладости из Рошпита</h3>
+<div class="grid-container">
+
+    <div class="card">
+        <img src="mango-mousse.png" alt="Enchanted Mango Mousse" class="card-img">
+        <h3>Enchanted Mango Mousse</h3>
+        <p>Нежный мусс из спелого тропического манго и белого шоколада. Мгновенно заливает +150 энергии в мозг.</p>
+        <span class="price">210 золотых</span>
+    </div>
+
+    <div class="card">
+        <img src="rapier-cake.png" alt="Divine Rapier" class="card-img">
+        <h3>Divine Rapier Mille-feuille</h3>
+        <p>Тысяча слоев теста и ванильный крем. Самый мощный десерт, но осторожно: если оставишь на столе — его заберет враг.</p>
+        <span class="price">450 золотых</span>
+    </div>
+
+</div>
+
+    <footer class="footer">
+        <p>&copy; 2026 The Secret Shop Café. Техническая поддержка: <a href="mailto:polikman07@bk.ru">polikman07@bk.ru</a></p>
+    </footer>
+
+    <script>
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = "block";
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
