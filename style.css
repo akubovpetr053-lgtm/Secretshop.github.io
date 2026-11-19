@@ -1,5 +1,5 @@
 /* ==========================================================================
-   THE SECRET SHOP CAFÉ - ОСНОВНЫЕ СТИЛИ (DOTA 2 THEMED TAVERN)
+   THE SECRET SHOP CAFE - CORE STYLES (DOTA 2 THEME)
    ========================================================================== */
 
 :root {
@@ -40,12 +40,11 @@ body {
     font-family: var(--font-body);
     background-color: var(--bg-main);
     color: var(--text-main);
-    padding-top: 80px;
     line-height: 1.6;
     overflow-x: hidden;
 }
 
-/* Кастомный скроллбар */
+/* Скроллбар */
 ::-webkit-scrollbar {
     width: 10px;
 }
@@ -62,29 +61,69 @@ body {
 }
 
 /* ==========================================================================
+   ТАЙМЕР СПАВНА РУН (ВЕРХНЯЯ СТРОКА)
+   ========================================================================== */
+.rune-timer-bar {
+    background: #090a0d;
+    border-bottom: 1px solid var(--border);
+    padding: 8px 20px;
+    font-size: 13px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    color: var(--text-muted);
+    width: 100%;
+}
+
+.rune-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.rune-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+    animation: blink 1.5s infinite;
+}
+
+.rune-dot.bounty { background: #e5c158; box-shadow: 0 0 8px #e5c158; }
+.rune-dot.wisdom { background: #38bdf8; box-shadow: 0 0 8px #38bdf8; }
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+}
+
+/* ==========================================================================
    ШАПКА (HEADER) И НАВИГАЦИЯ
    ========================================================================== */
 .header {
-    background-color: rgba(14, 15, 19, 0.95);
+    background-color: rgba(14, 15, 19, 0.98);
     border-bottom: 2px solid var(--border);
-    padding: 16px 40px;
+    padding: 14px 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: fixed;
-    width: 100%;
+    position: sticky;
     top: 0;
-    left: 0;
+    width: 100%;
     z-index: 1000;
     backdrop-filter: blur(12px);
     transition: var(--transition);
 }
 
+.logo,
 .logo-container {
     display: flex;
     align-items: center;
     gap: 12px;
-    text-decoration: none;
+    text-decoration: none !important;
+    color: var(--gold) !important;
 }
 
 .logo-crest {
@@ -100,22 +139,25 @@ body {
     font-size: 18px;
     box-shadow: 0 0 15px var(--gold-glow);
     transition: var(--transition);
+    flex-shrink: 0;
 }
 
 .logo-container:hover .logo-crest {
     transform: rotate(15deg) scale(1.08);
 }
 
-.logo-text {
+.logo-text,
+.logo {
     font-family: var(--font-heading);
     font-size: 22px;
     font-weight: 800;
-    color: var(--gold);
+    color: var(--gold) !important;
     letter-spacing: 1px;
 }
 
-.logo-text span {
-    color: var(--crimson);
+.logo-text span,
+.logo span {
+    color: var(--crimson) !important;
 }
 
 .nav {
@@ -125,8 +167,8 @@ body {
 }
 
 .nav a {
-    color: var(--text-muted);
-    text-decoration: none;
+    color: #94a3b8 !important;
+    text-decoration: none !important;
     font-weight: 500;
     font-size: 15px;
     text-transform: uppercase;
@@ -151,7 +193,7 @@ body {
 
 .nav a:hover,
 .nav a.active {
-    color: var(--gold);
+    color: var(--gold) !important;
     text-shadow: 0 0 10px var(--gold-glow);
 }
 
@@ -169,7 +211,7 @@ body {
 .cart-btn {
     background: rgba(229, 193, 88, 0.1);
     border: 1px solid var(--gold);
-    color: var(--gold);
+    color: var(--gold) !important;
     padding: 8px 16px;
     border-radius: 6px;
     cursor: pointer;
@@ -180,12 +222,12 @@ body {
     align-items: center;
     gap: 8px;
     transition: var(--transition);
-    text-decoration: none;
+    text-decoration: none !important;
 }
 
 .cart-btn:hover {
     background: var(--gold);
-    color: var(--bg-darker);
+    color: var(--bg-darker) !important;
     box-shadow: 0 0 15px var(--gold-glow);
 }
 
@@ -202,9 +244,9 @@ body {
     font-weight: bold;
 }
 
-/* Мобильный бургер */
+/* Мобильный бургер (скрыт на десктопе) */
 .menu-toggle {
-    display: none;
+    display: none !important;
     background: transparent;
     border: none;
     color: var(--gold);
@@ -213,7 +255,7 @@ body {
 }
 
 /* ==========================================================================
-   КНОПКИ И БЕЙДЖИ
+   КНОПКИ
    ========================================================================== */
 .btn {
     display: inline-flex;
@@ -221,9 +263,9 @@ body {
     justify-content: center;
     gap: 10px;
     background: linear-gradient(135deg, #e5c158 0%, #c49f38 100%);
-    color: #121316;
-    padding: 14px 32px;
-    text-decoration: none;
+    color: #121316 !important;
+    padding: 14px 30px;
+    text-decoration: none !important;
     font-family: var(--font-heading);
     font-weight: 700;
     font-size: 15px;
@@ -238,33 +280,20 @@ body {
     background: linear-gradient(135deg, #fff 0%, #e5c158 100%);
     transform: translateY(-2px);
     box-shadow: 0 8px 25px var(--gold-glow);
-    color: #121316;
+    color: #121316 !important;
 }
 
 .btn-secondary {
-    background: transparent;
-    color: var(--text-main);
-    border: 1px solid var(--border-highlight);
+    background: rgba(18, 19, 22, 0.8) !important;
+    color: #fff !important;
+    border: 1px solid var(--gold) !important;
     box-shadow: none;
 }
 
 .btn-secondary:hover {
-    background: rgba(255, 255, 255, 0.05);
-    border-color: var(--gold);
-    color: var(--gold);
+    background: var(--gold) !important;
+    color: #121316 !important;
     box-shadow: 0 0 15px var(--gold-glow);
-}
-
-.btn-crimson {
-    background: linear-gradient(135deg, #ff4c4c 0%, #b82828 100%);
-    color: #fff;
-    box-shadow: 0 4px 15px var(--crimson-glow);
-}
-
-.btn-crimson:hover {
-    background: linear-gradient(135deg, #ff6b6b 0%, #ff4c4c 100%);
-    box-shadow: 0 8px 25px var(--crimson-glow);
-    color: #fff;
 }
 
 .btn-sm {
@@ -313,14 +342,14 @@ body {
    ГЛАВНЫЙ ЭКРАН (HERO)
    ========================================================================== */
 .hero {
-    background: linear-gradient(rgba(10, 11, 14, 0.75), rgba(18, 19, 22, 0.95)), url('cafe-bg.jpg') center/cover no-repeat;
-    min-height: calc(100vh - 80px);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 60px 20px;
+    background: linear-gradient(rgba(10, 11, 14, 0.75), rgba(18, 19, 22, 0.92)), url('cafe-bg.jpg') center/cover no-repeat;
+    min-height: 80vh;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center !important;
+    padding: 70px 20px;
     position: relative;
 }
 
@@ -330,13 +359,15 @@ body {
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 120px;
+    height: 90px;
     background: linear-gradient(to top, var(--bg-main), transparent);
     pointer-events: none;
 }
 
 .hero-content {
     max-width: 860px;
+    width: 100%;
+    margin: 0 auto;
     z-index: 2;
     animation: fadeIn 0.8s ease-out;
 }
@@ -359,10 +390,10 @@ body {
 
 .hero-content h1 {
     font-family: var(--font-heading);
-    font-size: clamp(32px, 5vw, 54px);
+    font-size: clamp(32px, 5vw, 52px);
     color: #fff;
     margin-bottom: 20px;
-    line-height: 1.2;
+    line-height: 1.25;
     text-shadow: 0 2px 20px rgba(0, 0, 0, 0.8);
 }
 
@@ -372,10 +403,10 @@ body {
 }
 
 .hero-content p {
-    font-size: clamp(16px, 2vw, 20px);
+    font-size: clamp(16px, 2vw, 19px);
     color: #b0b8c7;
     margin-bottom: 35px;
-    max-width: 700px;
+    max-width: 720px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -383,28 +414,32 @@ body {
 .hero-buttons {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 16px;
     justify-content: center;
-    margin-bottom: 50px;
+    margin-bottom: 10px;
 }
 
-/* Статистика на Hero */
+/* Полоса статистики */
+.hero-stats-bar {
+    background: #0e0f13;
+    border-bottom: 1px solid var(--border);
+    padding: 30px 20px;
+}
+
 .hero-stats {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
     gap: 20px;
-    max-width: 900px;
+    max-width: 1100px;
     width: 100%;
-    z-index: 2;
-    margin-top: 20px;
+    margin: 0 auto;
 }
 
 .stat-item {
-    background: rgba(24, 26, 32, 0.8);
+    background: var(--bg-card);
     border: 1px solid var(--border);
-    padding: 18px 15px;
+    padding: 20px 15px;
     border-radius: 8px;
-    backdrop-filter: blur(8px);
     text-align: center;
     transition: var(--transition);
 }
@@ -434,14 +469,14 @@ body {
    СЕКЦИИ И ТИПОГРАФИКА
    ========================================================================== */
 .page-padding {
-    padding: 70px 40px;
+    padding: 60px 40px;
     max-width: 1240px;
     margin: 0 auto;
 }
 
 .section-title {
     font-family: var(--font-heading);
-    font-size: clamp(28px, 4vw, 40px);
+    font-size: clamp(28px, 4vw, 38px);
     text-align: center;
     color: #fff;
     margin-bottom: 12px;
@@ -455,7 +490,7 @@ body {
 .section-subtitle {
     text-align: center;
     color: var(--text-muted);
-    font-size: 16px;
+    font-size: 15.5px;
     max-width: 680px;
     margin: 0 auto 40px;
 }
@@ -506,7 +541,7 @@ body {
 }
 
 .feature-card:hover {
-    transform: translateY(-8px);
+    transform: translateY(-6px);
     border-color: var(--gold);
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4), 0 0 20px var(--gold-glow);
 }
@@ -630,7 +665,7 @@ body {
 }
 
 .card:hover {
-    transform: translateY(-8px);
+    transform: translateY(-6px);
     box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5), 0 0 20px var(--gold-glow);
     border-color: var(--gold);
 }
@@ -652,7 +687,7 @@ body {
 }
 
 .card:hover .card-img {
-    transform: scale(1.08);
+    transform: scale(1.06);
 }
 
 .card-badge {
@@ -763,14 +798,8 @@ body {
 }
 
 @keyframes modalFadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-25px) scale(0.96);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
+    from { opacity: 0; transform: translateY(-20px) scale(0.97); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
 .close-btn {
@@ -846,21 +875,18 @@ body {
     display: flex;
     align-items: center;
     gap: 10px;
-    box-shadow: 0 0 12px rgba(74, 222, 128, 0.15);
 }
 
 .modal-buff.mana-buff {
     background: rgba(56, 189, 248, 0.1);
     border-color: rgba(56, 189, 248, 0.4);
     color: var(--mana);
-    box-shadow: 0 0 12px var(--mana-glow);
 }
 
 .modal-buff.crimson-buff {
     background: rgba(255, 76, 76, 0.1);
     border-color: rgba(255, 76, 76, 0.4);
     color: var(--crimson);
-    box-shadow: 0 0 12px var(--crimson-glow);
 }
 
 .modal-footer {
@@ -972,12 +998,8 @@ body {
 }
 
 /* ==========================================================================
-   КОНТАКТЫ, КАРТА (МАЙКОП, ДИМИТРОВА 20) И НАВИГАЦИЯ
+   КОНТАКТЫ, КАРТА И НАВИГАЦИЯ
    ========================================================================== */
-.contacts-wrapper {
-    margin-top: 30px;
-}
-
 .contacts-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -996,7 +1018,7 @@ body {
 
 .contact-card:hover {
     border-color: var(--gold);
-    transform: translateY(-5px);
+    transform: translateY(-4px);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
 }
 
@@ -1039,7 +1061,7 @@ body {
     text-decoration: underline;
 }
 
-/* Блок Карты и маршрута */
+/* Карта */
 .map-section {
     background: var(--bg-card);
     border: 1px solid var(--border);
@@ -1112,7 +1134,7 @@ body {
 }
 
 /* ==========================================================================
-   ГАЛЕРЕЯ (GALLERY)
+   ГАЛЕРЕЯ
    ========================================================================== */
 .gallery-grid {
     display: grid;
@@ -1154,7 +1176,7 @@ body {
 }
 
 .gallery-item:hover img {
-    transform: scale(1.1);
+    transform: scale(1.08);
 }
 
 .gallery-item:hover .gallery-overlay {
@@ -1180,7 +1202,7 @@ body {
 }
 
 /* ==========================================================================
-   ФОРМА БРОНИРОВАНИЯ И ЗАКАЗА (FORM)
+   ФОРМА БРОНИРОВАНИЯ И ЗАКАЗА
    ========================================================================== */
 .order-section {
     background: var(--bg-card);
@@ -1267,7 +1289,7 @@ body {
 }
 
 /* ==========================================================================
-   КНОПКИ СОЦСЕТЕЙ (SOCIAL LINKS)
+   СОЦСЕТИ
    ========================================================================== */
 .socials-container {
     display: flex;
@@ -1285,57 +1307,21 @@ body {
     border-radius: 8px;
     background: var(--bg-card);
     border: 1px solid var(--border);
-    color: var(--text-main);
-    text-decoration: none;
+    color: var(--text-main) !important;
+    text-decoration: none !important;
     font-weight: 600;
     font-size: 14px;
     transition: var(--transition);
 }
 
-.social-btn i,
-.social-btn svg {
-    width: 18px;
-    height: 18px;
-    font-size: 18px;
-}
-
-.social-btn.tg:hover {
-    border-color: #229ED9;
-    color: #229ED9;
-    box-shadow: 0 0 15px rgba(34, 158, 217, 0.4);
-    transform: translateY(-3px);
-}
-
-.social-btn.vk:hover {
-    border-color: #0077FF;
-    color: #0077FF;
-    box-shadow: 0 0 15px rgba(0, 119, 255, 0.4);
-    transform: translateY(-3px);
-}
-
-.social-btn.discord:hover {
-    border-color: #5865F2;
-    color: #5865F2;
-    box-shadow: 0 0 15px rgba(88, 101, 242, 0.4);
-    transform: translateY(-3px);
-}
-
-.social-btn.steam:hover {
-    border-color: #66c0f4;
-    color: #66c0f4;
-    box-shadow: 0 0 15px rgba(102, 192, 244, 0.4);
-    transform: translateY(-3px);
-}
-
-.social-btn.yt:hover {
-    border-color: #FF0000;
-    color: #FF0000;
-    box-shadow: 0 0 15px rgba(255, 0, 0, 0.4);
-    transform: translateY(-3px);
-}
+.social-btn.tg:hover { border-color: #229ED9; color: #229ED9 !important; }
+.social-btn.vk:hover { border-color: #0077FF; color: #0077FF !important; }
+.social-btn.discord:hover { border-color: #5865F2; color: #5865F2 !important; }
+.social-btn.steam:hover { border-color: #66c0f4; color: #66c0f4 !important; }
+.social-btn.yt:hover { border-color: #FF0000; color: #FF0000 !important; }
 
 /* ==========================================================================
-   КАСТОМНЫЙ HTML / ZERO-БЛОК: АЛХИМИЧЕСКИЙ КОНСТРУКТОР ЗЕЛИЙ
+   ZERO-BLOCK: АЛХИМИЧЕСКИЙ КОНСТРУКТОР ЗЕЛИЙ
    ========================================================================== */
 .custom-potion-lab {
     background: linear-gradient(145deg, #181a22 0%, #111217 100%);
@@ -1392,7 +1378,6 @@ body {
 .flask-svg {
     width: 100%;
     height: 100%;
-    filter: drop-shadow(0 0 20px var(--potion-glow, rgba(56, 189, 248, 0.5)));
     transition: filter 0.5s ease;
 }
 
@@ -1419,44 +1404,6 @@ body {
 }
 
 /* ==========================================================================
-   ТАЙМЕР СПАВНА РУН (LIVE RUNES TICKER)
-   ========================================================================== */
-.rune-timer-bar {
-    background: rgba(20, 22, 28, 0.95);
-    border-bottom: 1px solid var(--border);
-    padding: 8px 20px;
-    font-size: 13px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 30px;
-    flex-wrap: wrap;
-    color: var(--text-muted);
-}
-
-.rune-item {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.rune-dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    display: inline-block;
-    animation: blink 1.5s infinite;
-}
-
-.rune-dot.bounty { background: #e5c158; box-shadow: 0 0 8px #e5c158; }
-.rune-dot.wisdom { background: #38bdf8; box-shadow: 0 0 8px #38bdf8; }
-
-@keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.4; }
-}
-
-/* ==========================================================================
    ПОДВАЛ (FOOTER)
    ========================================================================== */
 .footer {
@@ -1464,7 +1411,7 @@ body {
     border-top: 2px solid var(--border);
     padding: 60px 40px 25px;
     color: var(--text-muted);
-    margin-top: 80px;
+    margin-top: 60px;
 }
 
 .footer-top {
@@ -1497,14 +1444,14 @@ body {
 }
 
 .footer-links a {
-    color: var(--text-muted);
-    text-decoration: none;
+    color: var(--text-muted) !important;
+    text-decoration: none !important;
     font-size: 14px;
     transition: var(--transition);
 }
 
 .footer-links a:hover {
-    color: var(--gold);
+    color: var(--gold) !important;
     padding-left: 5px;
 }
 
@@ -1527,100 +1474,46 @@ body {
 }
 
 /* ==========================================================================
-   АДАПТИВНОСТЬ (RESPONSIVE MEDIA QUERIES)
+   АДАПТИВНОСТЬ
    ========================================================================== */
 @media (max-width: 992px) {
-    .header {
-        padding: 14px 20px;
-    }
-    .page-padding {
-        padding: 50px 20px;
-    }
-    .hero-stats {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    .footer-top {
-        grid-template-columns: 1fr 1fr;
-    }
-    .potion-lab-grid {
-        grid-template-columns: 1fr;
-    }
-    .owner-container {
-        flex-direction: column;
-        text-align: center;
-        gap: 25px;
-        padding: 30px 20px;
-    }
-    .lore-text {
-        border-left: none;
-        border-top: 2px solid var(--gold);
-        padding-left: 0;
-        padding-top: 15px;
-    }
+    .header { padding: 12px 20px; }
+    .page-padding { padding: 50px 20px; }
+    .hero-stats { grid-template-columns: repeat(2, 1fr) !important; }
+    .footer-top { grid-template-columns: 1fr 1fr; }
+    .potion-lab-grid { grid-template-columns: 1fr; }
+    .owner-container { flex-direction: column; text-align: center; gap: 25px; padding: 30px 20px; }
+    .lore-text { border-left: none; border-top: 2px solid var(--gold); padding-left: 0; padding-top: 15px; }
 }
 
 @media (max-width: 768px) {
-    body {
-        padding-top: 70px;
-    }
-    .menu-toggle {
-        display: block;
-    }
+    .menu-toggle { display: block !important; }
     .nav {
         position: fixed;
-        top: 70px;
+        top: 60px;
         left: -100%;
         width: 100%;
-        height: calc(100vh - 70px);
+        height: calc(100vh - 60px);
         background: rgba(14, 15, 19, 0.98);
         backdrop-filter: blur(15px);
         flex-direction: column;
         justify-content: center;
-        gap: 30px;
+        gap: 25px;
         transition: 0.4s ease;
         z-index: 999;
     }
-    .nav.open {
-        left: 0;
-    }
-    .nav a {
-        font-size: 20px;
-    }
-    .hero-buttons {
-        flex-direction: column;
-        width: 100%;
-    }
-    .hero-buttons .btn {
-        width: 100%;
-    }
-    .order-form {
-        grid-template-columns: 1fr;
-    }
-    .form-group.full-width {
-        grid-column: span 1;
-    }
-    .form-submit-wrap {
-        grid-column: span 1;
-    }
-    .footer-top {
-        grid-template-columns: 1fr;
-    }
-    .footer-bottom {
-        flex-direction: column;
-        text-align: center;
-    }
+    .nav.open { left: 0; }
+    .nav a { font-size: 20px; }
+    .hero-buttons { flex-direction: column; width: 100%; }
+    .hero-buttons .btn { width: 100%; }
+    .order-form { grid-template-columns: 1fr; }
+    .form-group.full-width { grid-column: span 1; }
+    .form-submit-wrap { grid-column: span 1; }
+    .footer-top { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; text-align: center; }
 }
 
 @media (max-width: 480px) {
-    .hero-stats {
-        grid-template-columns: 1fr;
-    }
-    .grid-container {
-        grid-template-columns: 1fr;
-    }
-    .card-footer {
-        flex-direction: column;
-        gap: 12px;
-        align-items: flex-start;
-    }
+    .hero-stats { grid-template-columns: 1fr !important; }
+    .grid-container { grid-template-columns: 1fr; }
 }
