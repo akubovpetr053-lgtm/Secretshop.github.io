@@ -1,91 +1,635 @@
-<html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
-    <title>The Secret Shop Café | Меню</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Secret Shop Café | Гримуар Меню</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Таймер спавна рун (Live Widget) -->
+    <div class="rune-timer-bar">
+        <div class="rune-item">
+            <span class="rune-dot bounty"></span>
+            <span>Руна Богатства: <strong id="bounty-timer">02:15</strong></span>
+        </div>
+        <div class="rune-item">
+            <span class="rune-dot wisdom"></span>
+            <span>Руна Мудрости: <strong id="wisdom-timer">05:40</strong></span>
+        </div>
+        <div class="rune-item">
+            <span>⚔️ Статус таверны: <strong style="color: var(--health);">Открыта для всех героев</strong></span>
+        </div>
+    </div>
+
+    <!-- Шапка сайта -->
     <header class="header">
-        <div class="logo">SECRET SHOP <span>CAFÉ</span></div>
-        <nav class="nav">
+        <a href="index.html" class="logo-container">
+            <div class="logo-crest">S</div>
+            <div class="logo-text">SECRET SHOP <span>CAFÉ</span></div>
+        </a>
+
+        <button class="menu-toggle" id="menuToggle" aria-label="Открыть навигацию">☰</button>
+
+        <nav class="nav" id="mainNav">
             <a href="index.html">Главная</a>
             <a href="menu.html" class="active">Меню</a>
             <a href="about.html">О Лавке</a>
+            <a href="contacts.html">Контакты</a>
         </nav>
+
+        <div class="header-actions">
+            <a href="#order-form" class="cart-btn" onclick="openOrderModal()">
+                <span>📜 Свиток</span>
+                <span class="cart-badge" id="cartCount">0</span>
+            </a>
+        </div>
     </header>
 
-    <section class="menu-section page-padding">
-        <h2 class="section-title">Артефакты и Снадобья</h2>
-        
-       <h3 class="category-title">Напитки (Mana & Health)</h3>
-<div class="grid-container">
+    <!-- Основной контент Меню -->
+    <main class="page-padding">
+        <div style="text-align: center; margin-bottom: 30px;">
+            <div class="hero-badge">Священный инвентарь таверны</div>
+            <h1 class="section-title">Артефакты и <span>Снадобья</span></h1>
+            <p class="section-subtitle">
+                Каждый рецепт создан нашими магами-бариста. Кликните на карточку любого блюда, чтобы изучить его полный состав, лор и уникальный игровой бафф.
+            </p>
+        </div>
 
-            <div class="card" onclick="openModal('modal-lotus')" style="cursor: pointer;">
-                <img src="lotus-brew.jpg" alt="Lotus Brew" class="card-img">
-                <h3>Lotus Fountain Brew</h3>
-                <p>Кликни, чтобы узнать секрет напитка...</p>
-                <span class="price">260 золотых</span>
-            </div>
+        <!-- Фильтры категорий -->
+        <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-bottom: 40px;">
+            <button class="btn btn-sm btn-filter active-filter" onclick="filterMenu('all', this)">Все артефакты</button>
+            <button class="btn btn-sm btn-secondary btn-filter" onclick="filterMenu('drinks', this)">☕ Зелья и Напитки</button>
+            <button class="btn btn-sm btn-secondary btn-filter" onclick="filterMenu('desserts', this)">🍰 Десерты Рошпита</button>
+            <button class="btn btn-sm btn-secondary btn-filter" onclick="filterMenu('food', this)">🍔 Сытные блюда</button>
+        </div>
 
-            <div class="card" onclick="openModal('modal-cheese')" style="cursor: pointer;">
-                <img src="roshan-cheese.jpg" alt="Roshan's Cheese" class="card-img">
-                <h3>Roshan's Cheese</h3>
-                <p>Кликни, чтобы узнать дроп с Рошана...</p>
-                <span class="price">320 золотых</span>
+        <!-- КАТЕГОРИЯ: НАПИТКИ -->
+        <div class="menu-category-group" data-category="drinks">
+            <h3 class="category-title">☕ Напитки и Эликсиры (Mana & Health)</h3>
+            <div class="grid-container">
+
+                <!-- 1. Lotus Fountain Brew -->
+                <div class="card" onclick="openModal('modal-lotus')" style="cursor: pointer;">
+                    <div class="card-img-wrap">
+                        <img src="lotus-brew.jpg" alt="Lotus Fountain Brew" class="card-img">
+                        <span class="card-badge">Кофе & Зелье</span>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">Lotus Fountain Brew</h3>
+                        <p class="card-hint">Кликни, чтобы узнать секрет священного фонтана...</p>
+                        <div class="card-footer">
+                            <span class="price">260 золотых</span>
+                            <button class="card-btn" onclick="event.stopPropagation(); openModal('modal-lotus')">Подробнее</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Clarity Blue Cold Brew -->
+                <div class="card" onclick="openModal('modal-clarity')" style="cursor: pointer;">
+                    <div class="card-img-wrap">
+                        <img src="clarity-brew.jpg" alt="Clarity Blue Cold Brew" class="card-img">
+                        <span class="card-badge">Mana Potion</span>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">Clarity Blue Cold Brew</h3>
+                        <p class="card-hint">Кликни, чтобы узнать секрет синего эликсира...</p>
+                        <div class="card-footer">
+                            <span class="price">280 золотых</span>
+                            <button class="card-btn" onclick="event.stopPropagation(); openModal('modal-clarity')">Подробнее</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Healing Salve Herb Infusion -->
+                <div class="card" onclick="openModal('modal-salve')" style="cursor: pointer;">
+                    <div class="card-img-wrap">
+                        <img src="lotus-brew.jpg" alt="Healing Salve" class="card-img" style="filter: hue-rotate(90deg);">
+                        <span class="card-badge">Health Potion</span>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">Healing Salve Elixir</h3>
+                        <p class="card-hint">Кликни, чтобы раскрыть древний рецепт исцеления...</p>
+                        <div class="card-footer">
+                            <span class="price">250 золотых</span>
+                            <button class="card-btn" onclick="event.stopPropagation(); openModal('modal-salve')">Подробнее</button>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
 
+        <div class="divider">
+            <span class="divider-icon">⚔️</span>
+        </div>
 
-        <div id="modal-lotus" class="modal">
-            <div class="modal-content">
-                <span class="close-btn" onclick="closeModal('modal-lotus')">&times;</span>
-                <h2 class="modal-title">Lotus Fountain Brew</h2>
-                <p class="modal-sostav"><strong>Состав:</strong> Эспрессо из кофейных зерен, собранных у Fountain Lotus, сироп из цветов лотоса, взбитое фермерское молоко.</p>
-                <p class="modal-desc">Нежный и освежающий кофейно-цветочный напиток. Зерна для него созревают под брызгами священного фонтана, поэтому каждый глоток одновременно восстанавливает и силы для катки, и ментальное спокойствие.</p>
-                <div class="modal-buff">✨ Особый бафф: Каждые 3 минуты восстанавливает желание учиться.</div>
+        <!-- КАТЕГОРИЯ: ДЕСЕРТЫ -->
+        <div class="menu-category-group" data-category="desserts">
+            <h3 class="category-title">🍰 Сладости из Рошпита (Roshan's Vault)</h3>
+            <div class="grid-container">
+
+                <!-- 4. Roshan's Cheese -->
+                <div class="card" onclick="openModal('modal-cheese')" style="cursor: pointer;">
+                    <div class="card-img-wrap">
+                        <img src="roshan-cheese.jpg" alt="Roshan's Cheese" class="card-img">
+                        <span class="card-badge">Дроп с Рошана</span>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">Roshan's Cheese</h3>
+                        <p class="card-hint">Кликни, чтобы узнать легенду сырного чизкейка...</p>
+                        <div class="card-footer">
+                            <span class="price">320 золотых</span>
+                            <button class="card-btn" onclick="event.stopPropagation(); openModal('modal-cheese')">Подробнее</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5. Enchanted Mango Mousse -->
+                <div class="card" onclick="openModal('modal-mango')" style="cursor: pointer;">
+                    <div class="card-img-wrap">
+                        <img src="mango-mousse.png" alt="Enchanted Mango Mousse" class="card-img">
+                        <span class="card-badge">Регенерация</span>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">Enchanted Mango Mousse</h3>
+                        <p class="card-hint">Кликни, чтобы вкусить свежий плод Зачарованного Древа...</p>
+                        <div class="card-footer">
+                            <span class="price">210 золотых</span>
+                            <button class="card-btn" onclick="event.stopPropagation(); openModal('modal-mango')">Подробнее</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6. Divine Rapier Mille-feuille -->
+                <div class="card" onclick="openModal('modal-rapier')" style="cursor: pointer;">
+                    <div class="card-img-wrap">
+                        <img src="rapier-cake.png" alt="Divine Rapier" class="card-img">
+                        <span class="card-badge">Легендарный</span>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">Divine Rapier Mille-feuille</h3>
+                        <p class="card-hint">Кликни, чтобы познать мощь Рапиры тысячи слоев...</p>
+                        <div class="card-footer">
+                            <span class="price">450 золотых</span>
+                            <button class="card-btn" onclick="event.stopPropagation(); openModal('modal-rapier')">Подробнее</button>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
 
-        <div id="modal-cheese" class="modal">
-            <div class="modal-content">
-                <span class="close-btn" onclick="closeModal('modal-cheese')">&times;</span>
-                <h2 class="modal-title">Roshan's Cheese</h2>
-                <p class="modal-sostav"><strong>Состав:</strong> Сливочный сыр маскарпоне, песочное тесто, топпинг из спелой вишни, сироп «Кровь Рошана».</p>
-                <p class="modal-desc">Легендарный сыр, который выпадает только самым упорным сладкоежкам. Нежный классический чизкейк, политый густым вишневым соусом. За право съесть последний кусочек обычно разворачивается драка 5 на 5.</p>
-                <div class="modal-buff">❤️ Особый бафф: Мгновенно лечит грусть и восстанавливает HP до максимума.</div>
+        <div class="divider">
+            <span class="divider-icon">🛡️</span>
+        </div>
+
+        <!-- КАТЕГОРИЯ: СЫТНЫЕ БЛЮДА -->
+        <div class="menu-category-group" data-category="food">
+            <h3 class="category-title">🍔 Пир Защитников Древних (Ancient Feast)</h3>
+            <div class="grid-container">
+
+                <!-- 7. Black King Bar Burger -->
+                <div class="card" onclick="openModal('modal-bkb')" style="cursor: pointer;">
+                    <div class="card-img-wrap">
+                        <img src="cafe-bg.jpg" alt="Black King Bar Burger" class="card-img" style="filter: contrast(1.2) brightness(0.8);">
+                        <span class="card-badge">Иммунитет к магии</span>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">Black King Bar Burger</h3>
+                        <p class="card-hint">Кликни, чтобы активировать неуязвимость к голоду...</p>
+                        <div class="card-footer">
+                            <span class="price">490 золотых</span>
+                            <button class="card-btn" onclick="event.stopPropagation(); openModal('modal-bkb')">Подробнее</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 8. Observer Ward Nachos Plate -->
+                <div class="card" onclick="openModal('modal-ward')" style="cursor: pointer;">
+                    <div class="card-img-wrap">
+                        <img src="cafe-bg.jpg" alt="Observer Ward Nachos" class="card-img" style="filter: sepia(0.8) hue-rotate(15deg);">
+                        <span class="card-badge">Обзор карты</span>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">Observer Ward Nachos</h3>
+                        <p class="card-hint">Кликни, чтобы осветить туман войны и вкусить соус...</p>
+                        <div class="card-footer">
+                            <span class="price">290 золотых</span>
+                            <button class="card-btn" onclick="event.stopPropagation(); openModal('modal-ward')">Подробнее</button>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
-<h3 class="category-title">Сладости из Рошпита</h3>
-<div class="grid-container">
 
-    <div class="card">
-        <img src="mango-mousse.png" alt="Enchanted Mango Mousse" class="card-img">
-        <h3>Enchanted Mango Mousse</h3>
-        <p>Нежный мусс из спелого тропического манго и белого шоколада. Мгновенно заливает +150 энергии в мозг.</p>
-        <span class="price">210 золотых</span>
+        <!-- ZERO-BLOCK: АЛХИМИЧЕСКИЙ КОНСТРУКТОР ЗЕЛИЙ -->
+        <section class="custom-potion-lab">
+            <h2 class="section-title">Алхимическая <span>Лаборатория</span></h2>
+            <p class="section-subtitle">
+                Кастомизируйте собственное зелье бодрости прямо в браузере. Выберите ингредиенты, и наш алхимический скрипт рассчитает бафф и цену!
+            </p>
+
+            <div class="potion-lab-grid">
+                <div>
+                    <div class="form-group" style="margin-bottom: 18px;">
+                        <label class="form-label">Основа напитка:</label>
+                        <select class="form-select" id="potionBase" onchange="updatePotionCraft()">
+                            <option value="lotus" data-price="200" data-color="#38bdf8">Эссенция Лотоса (Кофе колд-брю)</option>
+                            <option value="matcha" data-price="220" data-color="#4ade80">Зеленый эликсир Танго (Матча-латте)</option>
+                            <option value="cider" data-price="190" data-color="#e5c158">Солнечный сидр из Таверны</option>
+                            <option value="crimson" data-price="240" data-color="#ff4c4c">Рубиновый тоник Лины (Пряный гранат)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 18px;">
+                        <label class="form-label">Эссенция руны:</label>
+                        <select class="form-select" id="potionRune" onchange="updatePotionCraft()">
+                            <option value="double" data-price="60" data-buff="+50 к урону по дедлайнам и фокусу">Руна Двойного Урона (Красный чили-сироп)</option>
+                            <option value="haste" data-price="50" data-buff="+100% к скорости реакции в катках">Руна Ускорения (Цитрусовый энерджи-буст)</option>
+                            <option value="regen" data-price="70" data-buff="Восстанавливает нервные клетки и сон">Руна Регенерации (Мята и лесной сбор)</option>
+                            <option value="illusion" data-price="80" data-buff="Позволяет делать 3 задачи одновременно">Руна Иллюзий (Лавандовая мерцающая пыль)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 25px;">
+                        <label class="form-label">Секретная добавка Алхимика:</label>
+                        <select class="form-select" id="potionTopping" onchange="updatePotionCraft()">
+                            <option value="gold" data-price="50">Золотая съедобная пыльца Greevil's Greed (+50 золотых)</option>
+                            <option value="cheese" data-price="40">Сырная сливочная шапка Рошана (+40 золотых)</option>
+                            <option value="mango" data-price="35">Свежее пюре из Зачарованного Манго (+35 золотых)</option>
+                        </select>
+                    </div>
+
+                    <button class="btn" style="width: 100%;" onclick="orderCraftedPotion()">
+                        ✨ Сварить и добавить в заказ
+                    </button>
+                </div>
+
+                <div class="potion-preview-box">
+                    <div class="flask-wrapper">
+                        <!-- SVG Колба с интерактивным цветом и свечением -->
+                        <svg class="flask-svg" id="potionFlaskSvg" viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M40 10 H60 V35 L85 85 C92 98 83 115 67 115 H33 C17 115 8 98 15 85 L40 35 V10 Z" stroke="#e5c158" stroke-width="3" fill="#121316"/>
+                            <path id="flaskLiquid" d="M22 95 L35 70 H65 L78 95 C82 103 76 112 67 112 H33 C24 112 18 103 22 95 Z" fill="#38bdf8" opacity="0.85"/>
+                            <circle cx="50" cy="85" r="4" fill="#ffffff" opacity="0.6"/>
+                            <circle cx="42" cy="98" r="3" fill="#ffffff" opacity="0.5"/>
+                            <circle cx="58" cy="95" r="2.5" fill="#ffffff" opacity="0.5"/>
+                            <rect x="37" y="5" width="26" height="6" rx="2" fill="#e5c158"/>
+                        </svg>
+                    </div>
+                    <div class="potion-result-title" id="potionCraftName">Кастомное Зелье Бодрости</div>
+                    <div class="potion-result-buff" id="potionCraftBuff">✨ Бафф: +50 к урону по дедлайнам и фокусу</div>
+                    <div class="potion-result-price" id="potionCraftPrice">310 золотых</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- БЛОК: ФОРМА БРОНИРОВАНИЯ И ПРЕДЗАКАЗА -->
+        <section class="order-section" id="order-form">
+            <h2 class="section-title">Свиток Заказа и <span>Бронирования</span></h2>
+            <p class="section-subtitle">
+                Забронируйте столик в таверне или сделайте предзаказ артефактов к вашему прибытию по адресу <strong>г. Майкоп, ул. Димитрова, 20</strong>.
+            </p>
+
+            <form class="order-form" onsubmit="submitHeroOrder(event)">
+                <div class="form-group">
+                    <label class="form-label">Имя героя / Никнейм <span>*</span></label>
+                    <input type="text" class="form-input" id="heroName" placeholder="Например: Dendi / Алексей" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Связь со свитком (Телефон или Telegram) <span>*</span></label>
+                    <input type="text" class="form-input" id="heroContact" placeholder="+7 (999) 000-00-00 или @username" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Дата и время телепортации <span>*</span></label>
+                    <input type="datetime-local" class="form-input" id="heroDateTime" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Количество героев в пати</label>
+                    <select class="form-select" id="partySize">
+                        <option value="1">Одинокий путник (1 персона)</option>
+                        <option value="2" selected>Дуо на линии (2 персоны)</option>
+                        <option value="3">Трипла (3 персоны)</option>
+                        <option value="5">Полная команда 5v5 (5 персон)</option>
+                        <option value="10">Гильдия / Клан (до 10 персон)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Выбор локации в Лавке</label>
+                    <select class="form-select" id="tavernZone">
+                        <option value="main">Главный зал у камина таверны</option>
+                        <option value="arena">Киберспортивная арена с мониторами 240Hz</option>
+                        <option value="lounge">VIP-зона Рошпита (мягкие диваны и PS5)</option>
+                        <option value="bar">Места у алхимической барной стойки</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Выбранные артефакты в свитке</label>
+                    <input type="text" class="form-input" id="orderItemsSummary" placeholder="Добавьте блюда из меню выше или напишите..." readonly>
+                </div>
+
+                <div class="form-group full-width">
+                    <label class="form-label">Пожелания к заказу / Особые инструкции курьеру</label>
+                    <textarea class="form-textarea" id="heroNotes" placeholder="Например: без сахара, столик у окна, поставить финал The International..."></textarea>
+                </div>
+
+                <div class="form-submit-wrap">
+                    <button type="submit" class="btn" style="min-width: 280px;">
+                        📜 Запечатать свиток и забронировать
+                    </button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <!-- ==========================================================================
+         МОДАЛЬНЫЕ ОКНА ДЛЯ ВСЕХ БЛЮД (КАРТОЧЕК)
+         ========================================================================== -->
+
+    <!-- 1. Modal Lotus Fountain Brew -->
+    <div id="modal-lotus" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('modal-lotus')">&times;</span>
+            <div class="modal-img-container">
+                <img src="lotus-brew.jpg" alt="Lotus Fountain Brew">
+            </div>
+            <h2 class="modal-title">Lotus Fountain Brew</h2>
+            <p class="modal-sostav"><strong>Состав:</strong> Двойной эспрессо из кофейных зерен, собранных у Священного Фонтана Лотоса, натуральный цветочный сироп, взбитое фермерское молоко 3.2%.</p>
+            <p class="modal-desc">
+                Нежный и освежающий кофейно-цветочный напиток. Зерна для него созревают под кристальными брызгами фонтана на реке, поэтому каждый глоток одновременно восстанавливает и силы перед каткой, и душевное равновесие.
+            </p>
+            <div class="modal-buff mana-buff">
+                ✨ Особый бафф: Каждые 3 минуты восстанавливает желание учиться и раздает заряд ментального спокойствия.
+            </div>
+            <div class="modal-footer">
+                <span class="modal-price">260 золотых</span>
+                <button class="btn btn-sm" onclick="addToOrder('Lotus Fountain Brew', 260); closeModal('modal-lotus')">
+                    В свиток заказа 📜
+                </button>
+            </div>
+        </div>
     </div>
 
-    <div class="card">
-        <img src="rapier-cake.png" alt="Divine Rapier" class="card-img">
-        <h3>Divine Rapier Mille-feuille</h3>
-        <p>Тысяча слоев теста и ванильный крем. Самый мощный десерт, но осторожно: если оставишь на столе — его заберет враг.</p>
-        <span class="price">450 золотых</span>
+    <!-- 2. Modal Clarity Blue Cold Brew -->
+    <div id="modal-clarity" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('modal-clarity')">&times;</span>
+            <div class="modal-img-container">
+                <img src="clarity-brew.jpg" alt="Clarity Blue Cold Brew">
+            </div>
+            <h2 class="modal-title">Clarity Blue Cold Brew</h2>
+            <p class="modal-sostav"><strong>Состав:</strong> Эфиопский кофе 18-часовой холодной экстракции, экстракт синего василька и горной черники, натуральный тоник, листики перечной мяты.</p>
+            <p class="modal-desc">
+                Сверкающий лазурный эликсир ясного разума. Идеален перед рейтинговыми играми и сложными экзаменами: охлаждает пыл, снимает тильт и разгоняет мысли до скорости чтения заклинаний Инвокера.
+            </p>
+            <div class="modal-buff mana-buff">
+                🔷 Особый бафф: +150 к концентрации внимания и +6 маны в секунду в течение 6 часов.
+            </div>
+            <div class="modal-footer">
+                <span class="modal-price">280 золотых</span>
+                <button class="btn btn-sm" onclick="addToOrder('Clarity Blue Cold Brew', 280); closeModal('modal-clarity')">
+                    В свиток заказа 📜
+                </button>
+            </div>
+        </div>
     </div>
 
-</div>
+    <!-- 3. Modal Healing Salve Elixir -->
+    <div id="modal-salve" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('modal-salve')">&times;</span>
+            <div class="modal-img-container">
+                <img src="lotus-brew.jpg" alt="Healing Salve Elixir" style="filter: hue-rotate(90deg);">
+            </div>
+            <h2 class="modal-title">Healing Salve Elixir</h2>
+            <p class="modal-sostav"><strong>Состав:</strong> Горный травяной сбор (Саган-дайля, мелисса, чабрец), сироп алтайского шиповника, долька свежего лайма, натуральный луговой мед.</p>
+            <p class="modal-desc">
+                Густой согревающий отвар по секретной формуле лесных травников. Если вас задизморалили в чате или подкосила суровая погода — один кубок вернет вас в строй быстрее, чем вы успеете нажать байбек.
+            </p>
+            <div class="modal-buff">
+                💚 Особый бафф: Мгновенно снимает усталость и регенерирует 400 единиц душевного здоровья.
+            </div>
+            <div class="modal-footer">
+                <span class="modal-price">250 золотых</span>
+                <button class="btn btn-sm" onclick="addToOrder('Healing Salve Elixir', 250); closeModal('modal-salve')">
+                    В свиток заказа 📜
+                </button>
+            </div>
+        </div>
+    </div>
 
+    <!-- 4. Modal Roshan's Cheese -->
+    <div id="modal-cheese" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('modal-cheese')">&times;</span>
+            <div class="modal-img-container">
+                <img src="roshan-cheese.jpg" alt="Roshan's Cheese">
+            </div>
+            <h2 class="modal-title">Roshan's Cheese</h2>
+            <p class="modal-sostav"><strong>Состав:</strong> Нежнейший сливочный сыр маскарпоне, рассыпчатая песочная основа с фундуком, соус из спелой лесной вишни, густой топпинг «Кровь Рошана».</p>
+            <p class="modal-desc">
+                Легендарный десерт, выпадающий только самым упорным героям. Классический сливочный чизкейк идеальной плотности, политый кисло-сладким вишневым кули. За право съесть последний кусочек обычно разворачивается яростный файт 5 на 5!
+            </p>
+            <div class="modal-buff crimson-buff">
+                ❤️ Особый бафф: Мгновенно лечит грусть, снимает любой стресс и восполняет HP до 100%.
+            </div>
+            <div class="modal-footer">
+                <span class="modal-price">320 золотых</span>
+                <button class="btn btn-sm" onclick="addToOrder('Roshan Cheese', 320); closeModal('modal-cheese')">
+                    В свиток заказа 📜
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5. Modal Enchanted Mango Mousse -->
+    <div id="modal-mango" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('modal-mango')">&times;</span>
+            <div class="modal-img-container">
+                <img src="mango-mousse.png" alt="Enchanted Mango Mousse">
+            </div>
+            <h2 class="modal-title">Enchanted Mango Mousse</h2>
+            <p class="modal-sostav"><strong>Состав:</strong> Пюре из спелого тайского манго сорта Nam Dok Mai, воздушный мусс на белом бельгийском шоколаде, бисквитная подушка, желе из маракуйи.</p>
+            <p class="modal-desc">
+                Нежнейший тропический десерт с шелковистой текстурой, словно сорванный с Зачарованного Древа на легкой линии. Сладкие ноты белого шоколада гармонично подчеркнуты искрящейся кислинкой свежей маракуйи.
+            </p>
+            <div class="modal-buff">
+                🥭 Особый бафф: Мгновенно заливает +150 чистой энергии в мозг и дарует пассивную ауру радости окружающим.
+            </div>
+            <div class="modal-footer">
+                <span class="modal-price">210 золотых</span>
+                <button class="btn btn-sm" onclick="addToOrder('Enchanted Mango Mousse', 210); closeModal('modal-mango')">
+                    В свиток заказа 📜
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 6. Modal Divine Rapier Mille-feuille -->
+    <div id="modal-rapier" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('modal-rapier')">&times;</span>
+            <div class="modal-img-container">
+                <img src="rapier-cake.png" alt="Divine Rapier Mille-feuille">
+            </div>
+            <h2 class="modal-title">Divine Rapier Mille-feuille</h2>
+            <p class="modal-sostav"><strong>Состав:</strong> Тысяча тончайших слоев карамелизированного слоеного теста ручной раскатки, крем Дипломат с мадагаскарской ванилью, съедобное сусальное золото 23 карата.</p>
+            <p class="modal-desc">
+                Самый мощный и бескомпромиссный десерт в нашей Лавке. Невероятный хруст золотых слоев и глубокий сливочно-ванильный вкус. Но помните главное правило: если оставить тарелку без присмотра — ее тут же заберет вражеский мидер!
+            </p>
+            <div class="modal-buff crimson-buff">
+                ⚔️ Особый бафф: +350 к урону по плохому настроению. При падении вилки передается союзнику по столу.
+            </div>
+            <div class="modal-footer">
+                <span class="modal-price">450 золотых</span>
+                <button class="btn btn-sm" onclick="addToOrder('Divine Rapier', 450); closeModal('modal-rapier')">
+                    В свиток заказа 📜
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 7. Modal Black King Bar Burger -->
+    <div id="modal-bkb" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('modal-bkb')">&times;</span>
+            <div class="modal-img-container">
+                <img src="cafe-bg.jpg" alt="Black King Bar Burger" style="filter: contrast(1.2) brightness(0.8);">
+            </div>
+            <h2 class="modal-title">Black King Bar Burger</h2>
+            <p class="modal-sostav"><strong>Состав:</strong> Черная бриошь с чернилами каракатицы, сочная котлета из мраморной говядины Black Angus, двойной сыр Чеддер, копченый бекон, карамелизированный лук, фирменный соус BKB.</p>
+            <p class="modal-desc">
+                Монументальный бургер для истинных кэрри. Гарантирует абсолютную сытость и защищает от всех видов внешних раздражителей на целых 9 секунд (а в реальности — на весь игровой день).
+            </p>
+            <div class="modal-buff crimson-buff">
+                🛡️ Особый бафф: Полный иммунитет к голоду, проклятиям и дизморали в течение 6 часов.
+            </div>
+            <div class="modal-footer">
+                <span class="modal-price">490 золотых</span>
+                <button class="btn btn-sm" onclick="addToOrder('BKB Burger', 490); closeModal('modal-bkb')">
+                    В свиток заказа 📜
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 8. Modal Observer Ward Nachos -->
+    <div id="modal-ward" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('modal-ward')">&times;</span>
+            <div class="modal-img-container">
+                <img src="cafe-bg.jpg" alt="Observer Ward Nachos" style="filter: sepia(0.8) hue-rotate(15deg);">
+            </div>
+            <h2 class="modal-title">Observer Ward Nachos</h2>
+            <p class="modal-sostav"><strong>Состав:</strong> Кукурузные начос ручной обжарки, пряный сырный соус Кесо, свежее гуакамоле с лаймом, томатная сальса с кинзой, халапеньо.</p>
+            <p class="modal-desc">
+                Хрустящая закуска, которая ставится в центре стола и открывает полный обзор на вкусовые горизонты. Идеально под просмотр киберспортивных матчей в компании верных союзников.
+            </p>
+            <div class="modal-buff mana-buff">
+                👁️ Особый бафф: Снимает Туман Войны с настроения и дает обзор на лучшие моменты катки.
+            </div>
+            <div class="modal-footer">
+                <span class="modal-price">290 золотых</span>
+                <button class="btn btn-sm" onclick="addToOrder('Observer Nachos', 290); closeModal('modal-ward')">
+                    В свиток заказа 📜
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно подтверждения заказа -->
+    <div id="orderSuccessModal" class="modal">
+        <div class="modal-content" style="text-align: center;">
+            <span class="close-btn" onclick="closeModal('orderSuccessModal')">&times;</span>
+            <div style="font-size: 54px; color: var(--gold); margin-bottom: 15px;">📜✨</div>
+            <h2 class="modal-title">Свиток Запечатан!</h2>
+            <p class="modal-desc" id="successModalText">
+                Ваш заказ успешно принят курьером Потайной Лавки! Мы подготовили столик и артефакты к вашему прибытию по адресу <strong>г. Майкоп, ул. Димитрова, 20</strong>.
+            </p>
+            <div class="modal-buff" style="justify-content: center;">
+                🕊️ Курьер уже отправился. До встречи в таверне!
+            </div>
+            <button class="btn" onclick="closeModal('orderSuccessModal')">Отлично, жду катку!</button>
+        </div>
+    </div>
+
+    <!-- Подвал сайта -->
     <footer class="footer">
-        <p>&copy; 2026 The Secret Shop Café. Техническая поддержка: <a href="mailto:polikman07@bk.ru">polikman07@bk.ru</a></p>
+        <div class="footer-top">
+            <div class="footer-col">
+                <div class="logo-text" style="margin-bottom: 15px;">SECRET SHOP <span>CAFÉ</span></div>
+                <p>
+                    Атмосферная игровая таверна для геймеров, ценителей правильного кофе и качественных десертов. Место, где восстанавливается мана.
+                </p>
+                <p style="color: var(--gold); font-size: 13px;">
+                    📍 Адрес: г. Майкоп, ул. Димитрова, д. 20
+                </p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Навигация</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="menu.html">Гримуар Меню</a></li>
+                    <li><a href="about.html">О Лавке и Команде</a></li>
+                    <li><a href="contacts.html">Контакты и Карта</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Время рун</h4>
+                <p>Понедельник — Пятница:<br><strong style="color:#fff;">08:00 – 22:00</strong></p>
+                <p>Суббота — Воскресенье:<br><strong style="color:#fff;">10:00 – 00:00</strong></p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Связь с Лавкой</h4>
+                <p>Телефон: <strong>+7 (999) 322-13-37</strong></p>
+                <p>Почта: <a href="mailto:polikman07@bk.ru" class="mail-link">polikman07@bk.ru</a></p>
+                <div style="margin-top: 15px; display: flex; gap: 10px;">
+                    <a href="https://t.me" target="_blank" class="cart-btn" style="padding: 6px 12px; font-size: 12px;">Telegram</a>
+                    <a href="https://vk.com" target="_blank" class="cart-btn" style="padding: 6px 12px; font-size: 12px;">VK</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 The Secret Shop Café. Все права защищены. Разработано для победных каток.</p>
+            <p>Техническая поддержка: <a href="mailto:polikman07@bk.ru">polikman07@bk.ru</a></p>
+        </div>
     </footer>
 
+    <!-- Скрипты сайта -->
     <script>
+        // Управление мобильным меню
+        const menuToggle = document.getElementById('menuToggle');
+        const mainNav = document.getElementById('mainNav');
+        if (menuToggle) {
+            menuToggle.addEventListener('click', () => {
+                mainNav.classList.toggle('open');
+            });
+        }
+
+        // Модальные окна
         function openModal(modalId) {
-            document.getElementById(modalId).style.display = "block";
+            const m = document.getElementById(modalId);
+            if (m) m.style.display = "block";
         }
 
         function closeModal(modalId) {
-            document.getElementById(modalId).style.display = "none";
+            const m = document.getElementById(modalId);
+            if (m) m.style.display = "none";
         }
 
         window.onclick = function(event) {
@@ -93,6 +637,179 @@
                 event.target.style.display = "none";
             }
         }
+
+        window.onkeydown = function(event) {
+            if (event.key === "Escape") {
+                document.querySelectorAll('.modal').forEach(m => m.style.display = "none");
+            }
+        }
+
+        // Корзина предзаказа
+        let orderItems = [];
+
+        function addToOrder(name, price) {
+            orderItems.push({ name, price });
+            updateCartUI();
+            
+            // Всплывающая подсказка
+            showToast(`✨ «${name}» добавлен в ваш свиток!`);
+        }
+
+        function updateCartUI() {
+            const countElem = document.getElementById('cartCount');
+            const summaryElem = document.getElementById('orderItemsSummary');
+            if (countElem) countElem.innerText = orderItems.length;
+            if (summaryElem) {
+                if (orderItems.length === 0) {
+                    summaryElem.value = "";
+                } else {
+                    const total = orderItems.reduce((acc, item) => acc + item.price, 0);
+                    summaryElem.value = `${orderItems.map(i => i.name).join(', ')} (${total} золотых)`;
+                }
+            }
+        }
+
+        function openOrderModal() {
+            const formSec = document.getElementById('order-form');
+            if (formSec) {
+                formSec.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function showToast(message) {
+            let toast = document.getElementById('toastNotification');
+            if (!toast) {
+                toast = document.createElement('div');
+                toast.id = 'toastNotification';
+                toast.style.position = 'fixed';
+                toast.style.bottom = '30px';
+                toast.style.right = '30px';
+                toast.style.background = '#181a20';
+                toast.style.border = '1px solid #e5c158';
+                toast.style.color = '#e5c158';
+                toast.style.padding = '14px 24px';
+                toast.style.borderRadius = '8px';
+                toast.style.boxShadow = '0 8px 25px rgba(0,0,0,0.6)';
+                toast.style.zIndex = '3000';
+                toast.style.fontFamily = "'Cinzel', serif";
+                toast.style.fontSize = '14px';
+                toast.style.transition = 'all 0.3s ease';
+                document.body.appendChild(toast);
+            }
+            toast.innerText = message;
+            toast.style.opacity = '1';
+            toast.style.transform = 'translateY(0)';
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                toast.style.transform = 'translateY(20px)';
+            }, 2500);
+        }
+
+        // Фильтрация категорий
+        function filterMenu(category, btn) {
+            document.querySelectorAll('.btn-filter').forEach(b => {
+                b.classList.remove('active-filter');
+                b.classList.add('btn-secondary');
+            });
+            btn.classList.add('active-filter');
+            btn.classList.remove('btn-secondary');
+
+            const groups = document.querySelectorAll('.menu-category-group');
+            groups.forEach(group => {
+                if (category === 'all' || group.getAttribute('data-category') === category) {
+                    group.style.display = 'block';
+                } else {
+                    group.style.display = 'none';
+                }
+            });
+        }
+
+        // Интерактивный Алхимический конструктор зелий (ZERO-BLOCK)
+        function updatePotionCraft() {
+            const baseSelect = document.getElementById('potionBase');
+            const runeSelect = document.getElementById('potionRune');
+            const topSelect = document.getElementById('potionTopping');
+
+            const baseOpt = baseSelect.options[baseSelect.selectedIndex];
+            const runeOpt = runeSelect.options[runeSelect.selectedIndex];
+            const topOpt = topSelect.options[topSelect.selectedIndex];
+
+            const basePrice = parseInt(baseOpt.getAttribute('data-price') || 200);
+            const runePrice = parseInt(runeOpt.getAttribute('data-price') || 50);
+            const topPrice = parseInt(topOpt.getAttribute('data-price') || 40);
+            const total = basePrice + runePrice + topPrice;
+
+            const color = baseOpt.getAttribute('data-color') || '#38bdf8';
+            const liquid = document.getElementById('flaskLiquid');
+            if (liquid) liquid.setAttribute('fill', color);
+
+            const flaskSvg = document.getElementById('potionFlaskSvg');
+            if (flaskSvg) {
+                flaskSvg.style.filter = `drop-shadow(0 0 25px ${color})`;
+            }
+
+            const nameElem = document.getElementById('potionCraftName');
+            const buffElem = document.getElementById('potionCraftBuff');
+            const priceElem = document.getElementById('potionCraftPrice');
+
+            const customName = `${runeOpt.text.split('(')[0].trim()} • ${baseOpt.text.split('(')[0].trim()}`;
+            if (nameElem) nameElem.innerText = customName;
+            if (buffElem) buffElem.innerText = `✨ Бафф: ${runeOpt.getAttribute('data-buff')}`;
+            if (priceElem) priceElem.innerText = `${total} золотых`;
+        }
+
+        function orderCraftedPotion() {
+            const name = document.getElementById('potionCraftName').innerText;
+            const priceText = document.getElementById('potionCraftPrice').innerText;
+            const price = parseInt(priceText) || 300;
+            addToOrder(`Кастомное зелье: ${name}`, price);
+            openOrderModal();
+        }
+
+        // Отправка формы бронирования
+        function submitHeroOrder(event) {
+            event.preventDefault();
+            const name = document.getElementById('heroName').value;
+            const contact = document.getElementById('heroContact').value;
+            const dateTime = document.getElementById('heroDateTime').value;
+            const items = document.getElementById('orderItemsSummary').value || "Бронь столика в таверне";
+
+            const textElem = document.getElementById('successModalText');
+            if (textElem) {
+                textElem.innerHTML = `Герой <strong>${name}</strong> (${contact})!<br>Ваша бронь на <strong>${dateTime.replace('T', ' ')}</strong> успешно принята.<br>Состав заказа: <em>${items}</em>.<br><br>Ждем вас по адресу: <strong>г. Майкоп, ул. Димитрова, 20</strong>!`;
+            }
+            openModal('orderSuccessModal');
+
+            // Очистка формы
+            event.target.reset();
+            orderItems = [];
+            updateCartUI();
+        }
+
+        // Живой таймер спавна рун в Доте
+        function startRuneTimers() {
+            setInterval(() => {
+                const now = new Date();
+                const totalSeconds = now.getMinutes() * 60 + now.getSeconds();
+
+                // Руна богатства каждые 3 минуты (180 сек)
+                const bountyRemain = 180 - (totalSeconds % 180);
+                const bMin = String(Math.floor(bountyRemain / 60)).padStart(2, '0');
+                const bSec = String(bountyRemain % 60).padStart(2, '0');
+                const bEl = document.getElementById('bounty-timer');
+                if (bEl) bEl.innerText = `${bMin}:${bSec}`;
+
+                // Руна мудрости каждые 7 минут (420 сек)
+                const wisdomRemain = 420 - (totalSeconds % 420);
+                const wMin = String(Math.floor(wisdomRemain / 60)).padStart(2, '0');
+                const wSec = String(wisdomRemain % 60).padStart(2, '0');
+                const wEl = document.getElementById('wisdom-timer');
+                if (wEl) wEl.innerText = `${wMin}:${wSec}`;
+            }, 1000);
+        }
+
+        startRuneTimers();
+        updatePotionCraft();
     </script>
 </body>
 </html>

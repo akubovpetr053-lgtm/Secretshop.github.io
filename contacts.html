@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Secret Shop Café | Контакты и Навигация</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Живой таймер спавна рун -->
+    <div class="rune-timer-bar">
+        <div class="rune-item">
+            <span class="rune-dot bounty"></span>
+            <span>Руна Богатства: <strong id="bounty-timer">02:10</strong></span>
+        </div>
+        <div class="rune-item">
+            <span class="rune-dot wisdom"></span>
+            <span>Руна Мудрости: <strong id="wisdom-timer">05:35</strong></span>
+        </div>
+        <div class="rune-item">
+            <span>📍 Навигация: <strong>г. Майкоп, ул. Димитрова, 20</strong></span>
+        </div>
+    </div>
+
+    <!-- Шапка сайта -->
+    <header class="header">
+        <a href="index.html" class="logo-container">
+            <div class="logo-crest">S</div>
+            <div class="logo-text">SECRET SHOP <span>CAFÉ</span></div>
+        </a>
+
+        <button class="menu-toggle" id="menuToggle" aria-label="Открыть навигацию">☰</button>
+
+        <nav class="nav" id="mainNav">
+            <a href="index.html">Главная</a>
+            <a href="menu.html">Меню</a>
+            <a href="about.html">О Лавке</a>
+            <a href="contacts.html" class="active">Контакты</a>
+        </nav>
+
+        <div class="header-actions">
+            <a href="menu.html" class="cart-btn">
+                <span>📜 Гримуар Меню</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Основной контент Контактов -->
+    <main class="page-padding">
+        <div style="text-align: center; margin-bottom: 40px;">
+            <div class="hero-badge">Координаты и связь</div>
+            <h1 class="section-title">Контакты и <span>Навигация</span></h1>
+            <p class="section-subtitle">
+                Держите курс на нашу таверну. Мы находимся в городе Майкопе и всегда рады как одиночным героям, так и сплоченным киберспортивным составам.
+            </p>
+        </div>
+
+        <!-- Сетка контактов -->
+        <div class="contacts-grid">
+            <div class="contact-card">
+                <div class="contact-icon">📍</div>
+                <h3>Адрес Таверны</h3>
+                <p class="highlight-address">г. Майкоп, ул. Димитрова, д. 20</p>
+                <p>Республика Адыгея, индекс 385021<br>Вход со стороны главной улицы</p>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-icon">⏳</div>
+                <h3>График спавна рун</h3>
+                <p>Пн — Пт: <strong>08:00 – 22:00</strong></p>
+                <p style="margin-top: 8px;">Сб — Вс: <strong>10:00 – 00:00</strong><br>(трансляции турниров до конца матча)</p>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-icon">📞</div>
+                <h3>Телефон & Мессенджеры</h3>
+                <p>Горячая линия: <strong>+7 (999) 322-13-37</strong></p>
+                <p style="margin-top: 8px;">Telegram бот: <strong>@secret_shop_maykop</strong></p>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-icon">✉️</div>
+                <h3>Электронный свиток</h3>
+                <p>Поддержка и сотрудничество:<br><a href="mailto:polikman07@bk.ru" class="mail-link">polikman07@bk.ru</a></p>
+            </div>
+        </div>
+
+        <!-- Разделитель -->
+        <div class="divider">
+            <span class="divider-icon">🗺️</span>
+        </div>
+
+        <!-- Интерактивная карта (Майкоп, ул. Димитрова, 20) -->
+        <section class="map-section">
+            <div class="map-header">
+                <div>
+                    <div class="hero-badge" style="margin-bottom: 6px;">Навигационная точка</div>
+                    <h3>Фрагмент карты: <span>Майкоп, ул. Димитрова, 20</span></h3>
+                </div>
+                <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                    <a href="https://yandex.ru/maps/?pt=40.063598,44.621252&z=17&l=map" target="_blank" class="btn btn-sm">
+                        🗺️ Яндекс.Карты
+                    </a>
+                    <a href="https://2gis.ru/maykop/search/Майкоп%20Димитрова%2020" target="_blank" class="btn btn-sm btn-secondary">
+                        📍 2ГИС
+                    </a>
+                </div>
+            </div>
+
+            <!-- Интерактивная карта с маркером -->
+            <div class="map-container">
+                <iframe 
+                    title="Интерактивная карта: Майкоп, ул. Димитрова, 20" 
+                    src="https://yandex.ru/map-widget/v1/?ll=40.063598%2C44.621252&z=16&pt=40.063598%2C44.621252%2Cpm2rdm" 
+                    allowfullscreen="true">
+                </iframe>
+            </div>
+
+            <!-- Гайд по маршруту -->
+            <div class="map-route-guide">
+                <div class="route-item">
+                    <h4>🚗 На автомобиле</h4>
+                    <p>Двигайтесь по улице Димитрова до дома 20. Перед зданием расположена удобная парковочная зона для гостей кофейни.</p>
+                </div>
+                <div class="route-item">
+                    <h4>🚌 Общественный транспорт</h4>
+                    <p>Автобусы и маршрутки до остановки «Улица Димитрова». Пеший путь от остановки займет не более 2-3 минут.</p>
+                </div>
+                <div class="route-item">
+                    <h4>🚶 Пешком от парка и центра</h4>
+                    <p>Удобный пешеходный тротуар, ориентир — микрорайон «Черемушки» и яркая золотая вывеска с руническим щитом.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Разделитель -->
+        <div class="divider">
+            <span class="divider-icon">💬</span>
+        </div>
+
+        <!-- Кнопки социальных сетей -->
+        <section style="text-align: center; margin-bottom: 50px;">
+            <div class="hero-badge">Сообщество таверны</div>
+            <h2 class="section-title">Мы в <span>Социальных Сетях</span></h2>
+            <p class="section-subtitle">
+                Активные ссылки на наши официальные каналы. Следите за турнирными сетками, розыгрышами артефактов и новинками меню!
+            </p>
+
+            <div class="socials-container">
+                <a href="https://t.me" target="_blank" class="social-btn tg">
+                    ✈️ Telegram Канал
+                </a>
+                <a href="https://vk.com" target="_blank" class="social-btn vk">
+                    🌐 ВКонтакте
+                </a>
+                <a href="https://discord.com" target="_blank" class="social-btn discord">
+                    🎧 Discord Сервер
+                </a>
+                <a href="https://steamcommunity.com" target="_blank" class="social-btn steam">
+                    🎮 Steam Сообщество
+                </a>
+                <a href="https://youtube.com" target="_blank" class="social-btn yt">
+                    ▶️ YouTube Канал
+                </a>
+            </div>
+        </section>
+
+        <!-- Разделитель -->
+        <div class="divider">
+            <span class="divider-icon">📜</span>
+        </div>
+
+        <!-- Форма обратной связи / отправки свитка -->
+        <section class="order-section">
+            <div style="text-align: center;">
+                <div class="hero-badge">Быстрая связь</div>
+                <h2 class="section-title">Отправить Свиток <span>в Лавку</span></h2>
+                <p class="section-subtitle">
+                    Хотите провести турнир, забронировать всю таверну под день рождения или предложить сотрудничество? Заполните форму!
+                </p>
+            </div>
+
+            <form class="order-form" onsubmit="submitContactMessage(event)">
+                <div class="form-group">
+                    <label class="form-label">Ваше Имя / Позывной <span>*</span></label>
+                    <input type="text" class="form-input" id="cName" placeholder="Например: Ярослав / Miposhka" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Контакт для ответа (Телефон/Telegram/Email) <span>*</span></label>
+                    <input type="text" class="form-input" id="cContact" placeholder="+7 (999) 000-00-00 или email@bk.ru" required>
+                </div>
+
+                <div class="form-group full-width">
+                    <label class="form-label">Тема послания</label>
+                    <select class="form-select" id="cSubject">
+                        <option value="booking">Бронирование турнирной зоны 5v5</option>
+                        <option value="event">Проведение киберспортивного мероприятия / День Рождения</option>
+                        <option value="feedback">Отзыв о снадобьях и обслуживании</option>
+                        <option value="partnership">Партнерство и поставка редких артефактов</option>
+                    </select>
+                </div>
+
+                <div class="form-group full-width">
+                    <label class="form-label">Текст сообщения <span>*</span></label>
+                    <textarea class="form-textarea" id="cMessage" placeholder="Опишите ваши пожелания, количество гостей или задайте вопрос хранителю Лавки..." required></textarea>
+                </div>
+
+                <div class="form-submit-wrap">
+                    <button type="submit" class="btn" style="min-width: 280px;">
+                        ✉️ Отправить послание курьером
+                    </button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <!-- Модальное окно подтверждения отправки -->
+    <div id="contactSuccessModal" class="modal">
+        <div class="modal-content" style="text-align: center;">
+            <span class="close-btn" onclick="closeModal('contactSuccessModal')">&times;</span>
+            <div style="font-size: 52px; color: var(--gold); margin-bottom: 15px;">🕊️📜</div>
+            <h2 class="modal-title">Послание Отправлено!</h2>
+            <p class="modal-desc" id="contactSuccessDesc">
+                Ваш свиток успешно доставлен хранителю Лавки. Мы свяжемся с вами в течение часа!
+            </p>
+            <div class="modal-buff" style="justify-content: center;">
+                ✨ Скоростной курьер доставил ответ в архив таверны.
+            </div>
+            <button class="btn" onclick="closeModal('contactSuccessModal')">Отлично!</button>
+        </div>
+    </div>
+
+    <!-- Подвал сайта -->
+    <footer class="footer">
+        <div class="footer-top">
+            <div class="footer-col">
+                <div class="logo-text" style="margin-bottom: 15px;">SECRET SHOP <span>CAFÉ</span></div>
+                <p>
+                    Атмосферная игровая таверна для геймеров, ценителей правильного кофе и качественных десертов. Место, где восстанавливается мана.
+                </p>
+                <p style="color: var(--gold); font-size: 13.5px;">
+                    📍 Адрес: г. Майкоп, ул. Димитрова, д. 20
+                </p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Навигация</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="menu.html">Гримуар Меню</a></li>
+                    <li><a href="about.html">О Лавке и Команде</a></li>
+                    <li><a href="contacts.html">Контакты и Карта</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Время рун</h4>
+                <p>Понедельник — Пятница:<br><strong style="color:#fff;">08:00 – 22:00</strong></p>
+                <p>Суббота — Воскресенье:<br><strong style="color:#fff;">10:00 – 00:00</strong></p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Связь с Лавкой</h4>
+                <p>Телефон: <strong>+7 (999) 322-13-37</strong></p>
+                <p>Почта: <a href="mailto:polikman07@bk.ru" class="mail-link">polikman07@bk.ru</a></p>
+                <div style="margin-top: 15px; display: flex; gap: 10px;">
+                    <a href="https://t.me" target="_blank" class="cart-btn" style="padding: 6px 12px; font-size: 12px;">Telegram</a>
+                    <a href="https://vk.com" target="_blank" class="cart-btn" style="padding: 6px 12px; font-size: 12px;">VK</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 The Secret Shop Café. Все права защищены. Разработано для победных каток.</p>
+            <p>Техническая поддержка: <a href="mailto:polikman07@bk.ru">polikman07@bk.ru</a></p>
+        </div>
+    </footer>
+
+    <!-- Скрипты сайта -->
+    <script>
+        // Мобильное меню
+        const menuToggle = document.getElementById('menuToggle');
+        const mainNav = document.getElementById('mainNav');
+        if (menuToggle) {
+            menuToggle.addEventListener('click', () => {
+                mainNav.classList.toggle('open');
+            });
+        }
+
+        // Модальные окна
+        function openModal(modalId) {
+            const m = document.getElementById(modalId);
+            if (m) m.style.display = "block";
+        }
+
+        function closeModal(modalId) {
+            const m = document.getElementById(modalId);
+            if (m) m.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = "none";
+            }
+        }
+
+        window.onkeydown = function(event) {
+            if (event.key === "Escape") {
+                document.querySelectorAll('.modal').forEach(m => m.style.display = "none");
+            }
+        }
+
+        // Отправка формы обратной связи
+        function submitContactMessage(e) {
+            e.preventDefault();
+            const name = document.getElementById('cName').value;
+            const contact = document.getElementById('cContact').value;
+            const desc = document.getElementById('contactSuccessDesc');
+            if (desc) {
+                desc.innerHTML = `Герой <strong>${name}</strong>!<br>Ваш свиток передан хранителям Лавки. Мы свяжемся с вами по контакту <strong>${contact}</strong> в ближайшее время.`;
+            }
+            openModal('contactSuccessModal');
+            e.target.reset();
+        }
+
+        // Таймер спавна рун
+        function startRuneTimers() {
+            setInterval(() => {
+                const now = new Date();
+                const totalSeconds = now.getMinutes() * 60 + now.getSeconds();
+
+                const bountyRemain = 180 - (totalSeconds % 180);
+                const bMin = String(Math.floor(bountyRemain / 60)).padStart(2, '0');
+                const bSec = String(bountyRemain % 60).padStart(2, '0');
+                const bEl = document.getElementById('bounty-timer');
+                if (bEl) bEl.innerText = `${bMin}:${bSec}`;
+
+                const wisdomRemain = 420 - (totalSeconds % 420);
+                const wMin = String(Math.floor(wisdomRemain / 60)).padStart(2, '0');
+                const wSec = String(wisdomRemain % 60).padStart(2, '0');
+                const wEl = document.getElementById('wisdom-timer');
+                if (wEl) wEl.innerText = `${wMin}:${wSec}`;
+            }, 1000);
+        }
+
+        startRuneTimers();
+    </script>
+</body>
+</html>

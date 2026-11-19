@@ -1,30 +1,587 @@
-<html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
-    <title>The Secret Shop Café | Главная</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Secret Shop Café | Главная таверна</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Живой таймер спавна рун -->
+    <div class="rune-timer-bar">
+        <div class="rune-item">
+            <span class="rune-dot bounty"></span>
+            <span>Руна Богатства: <strong id="bounty-timer">02:45</strong></span>
+        </div>
+        <div class="rune-item">
+            <span class="rune-dot wisdom"></span>
+            <span>Руна Мудрости: <strong id="wisdom-timer">06:10</strong></span>
+        </div>
+        <div class="rune-item">
+            <span>📍 Локация: <strong>Майкоп, ул. Димитрова, 20</strong></span>
+        </div>
+    </div>
+
+    <!-- Шапка сайта -->
     <header class="header">
-        <div class="logo">SECRET SHOP <span>CAFÉ</span></div>
-        <nav class="nav">
+        <a href="index.html" class="logo-container">
+            <div class="logo-crest">S</div>
+            <div class="logo-text">SECRET SHOP <span>CAFÉ</span></div>
+        </a>
+
+        <button class="menu-toggle" id="menuToggle" aria-label="Открыть навигацию">☰</button>
+
+        <nav class="nav" id="mainNav">
             <a href="index.html" class="active">Главная</a>
             <a href="menu.html">Меню</a>
             <a href="about.html">О Лавке</a>
+            <a href="contacts.html">Контакты</a>
         </nav>
+
+        <div class="header-actions">
+            <a href="menu.html" class="cart-btn">
+                <span>📜 Гримуар Меню</span>
+            </a>
+        </div>
     </header>
 
-    <section class="hero main-bg">
+    <!-- Главный баннер (Hero) -->
+    <section class="hero">
         <div class="hero-content">
-            <h1>Добро пожаловать в Потайную Лавку</h1>
-            <p>Место, где восстанавливается мана и рождаются легенды.</p>
-            <a href="menu.html" class="btn">Закупить артефакты (Меню)</a>
+            <div class="hero-badge">Потайная Лавка • Майкоп</div>
+            <h1>Добро пожаловать в <span>Потайную Лавку</span></h1>
+            <p>
+                Место, где восстанавливается мана, куются победные стратегии и рождаются легенды. Крафтовый кофе, авторские десерты Рошпита и киберспортивная атмосфера.
+            </p>
+            <div class="hero-buttons">
+                <a href="menu.html" class="btn">⚔️ Закупить артефакты (Меню)</a>
+                <a href="#booking" class="btn btn-secondary">📜 Забронировать столик</a>
+            </div>
+        </div>
+
+        <!-- Статистика лавки -->
+        <div class="hero-stats">
+            <div class="stat-item">
+                <div class="stat-num">1 200+</div>
+                <div class="stat-label">Сытых героев</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-num">322</div>
+                <div class="stat-label">Камбека в катках</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-num">100%</div>
+                <div class="stat-label">Восстановление маны</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-num">240 Гц</div>
+                <div class="stat-label">Турнирная зона</div>
+            </div>
         </div>
     </section>
 
+    <!-- Основной контент страницы -->
+    <main class="page-padding">
+
+        <!-- РАЗДЕЛ 1: ПРЕИМУЩЕСТВА -->
+        <section style="margin-bottom: 50px;">
+            <div style="text-align: center;">
+                <div class="hero-badge">Почему выбирают нас</div>
+                <h2 class="section-title">Преимущества <span>Лавки</span></h2>
+                <p class="section-subtitle">
+                    Мы создали пространство, объединяющее атмосферу классической фэнтези-таверны и современный комфорт для игроков любого ранга.
+                </p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon-box">☕</div>
+                    <h3>Магическая рецептура</h3>
+                    <p>Зерна арабики класса Specialty, обжаренные пламенем Лины, и уникальные сиропы ручной работы от шеф-алхимика.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon-box">🖥️</div>
+                    <h3>Турнирный сетап 4K</h3>
+                    <p>Прямые трансляции мейджоров и The International на огромных экранах со стадионным звуком и чилловой фан-зоной.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon-box">🏆</div>
+                    <h3>Баффы за победы</h3>
+                    <p>Покажи свой текущий MMR или победный экран матча за последние 2 часа и получи скидку до 25% на любое снадобье!</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon-box">🎮</div>
+                    <h3>Игровая зона и консоли</h3>
+                    <p>Мощные ПК с мониторами 240Hz, консоли PlayStation 5 и коллекция тематических настольных игр для вашей гильдии.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- РАЗДЕЛИТЕЛЬ -->
+        <div class="divider">
+            <span class="divider-icon">⚜️</span>
+        </div>
+
+        <!-- РАЗДЕЛ 2: ЭТАПЫ (КАК РАБОТАЕТ ЛАВКА) -->
+        <section style="margin-bottom: 50px;">
+            <div style="text-align: center;">
+                <div class="hero-badge">Гайд для новобранцев</div>
+                <h2 class="section-title">Этапы <span>Визита в Таверну</span></h2>
+                <p class="section-subtitle">
+                    Всего 4 простых шага отделяют вас от идеального отдыха и полного восстановления сил.
+                </p>
+            </div>
+
+            <div class="steps-container">
+                <div class="step-card">
+                    <div class="step-number">01</div>
+                    <h3>Изучите Гримуар</h3>
+                    <p>Откройте раздел «Меню», кликните на карточки артефактов и выберите свой бафф на сегодня.</p>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">02</div>
+                    <h3>Запечатайте свиток</h3>
+                    <p>Заполните форму бронирования на сайте, указав состав пати и желаемое время телепортации.</p>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">03</div>
+                    <h3>Следуйте по карте</h3>
+                    <p>Двигайтесь по координатам: г. Майкоп, ул. Димитрова, 20. Наша вывеска видна даже сквозь туман войны.</p>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">04</div>
+                    <h3>Побеждайте в катках</h3>
+                    <p>Наслаждайтесь крафтовыми напитками, заряжайтесь маной и берите победные серии с друзьями!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- РАЗДЕЛИТЕЛЬ -->
+        <div class="divider">
+            <span class="divider-icon">📜</span>
+        </div>
+
+        <!-- РАЗДЕЛ 3: ТОПОВЫЕ АРТЕФАКТЫ (ПРЕВЬЮ МЕНЮ) -->
+        <section style="margin-bottom: 50px;">
+            <div style="text-align: center;">
+                <div class="hero-badge">Популярные лоты</div>
+                <h2 class="section-title">Легендарные <span>Артефакты Меню</span></h2>
+                <p class="section-subtitle">
+                    Хиты заказов среди странников и киберспортсменов. Кликните на карточку, чтобы узнать подробности!
+                </p>
+            </div>
+
+            <div class="grid-container">
+                <!-- Карточка 1 -->
+                <div class="card" onclick="window.location.href='menu.html'" style="cursor: pointer;">
+                    <div class="card-img-wrap">
+                        <img src="lotus-brew.jpg" alt="Lotus Fountain Brew" class="card-img">
+                        <span class="card-badge">Хит продаж</span>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">Lotus Fountain Brew</h3>
+                        <p class="card-hint">Нежный кофейно-цветочный напиток у священного лотоса...</p>
+                        <div class="card-footer">
+                            <span class="price">260 золотых</span>
+                            <span class="card-btn">В меню &rarr;</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Карточка 2 -->
+                <div class="card" onclick="window.location.href='menu.html'" style="cursor: pointer;">
+                    <div class="card-img-wrap">
+                        <img src="clarity-brew.jpg" alt="Clarity Blue Cold Brew" class="card-img">
+                        <span class="card-badge">Mana Boost</span>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">Clarity Blue Cold Brew</h3>
+                        <p class="card-hint">Лазурный эликсир холодной экстракции для кристальной концентрации...</p>
+                        <div class="card-footer">
+                            <span class="price">280 золотых</span>
+                            <span class="card-btn">В меню &rarr;</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Карточка 3 -->
+                <div class="card" onclick="window.location.href='menu.html'" style="cursor: pointer;">
+                    <div class="card-img-wrap">
+                        <img src="roshan-cheese.jpg" alt="Roshan's Cheese" class="card-img">
+                        <span class="card-badge">Легендарный дроп</span>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">Roshan's Cheese</h3>
+                        <p class="card-hint">Классический вишневый чизкейк, за который дерутся 5 на 5 на Рошпите...</p>
+                        <div class="card-footer">
+                            <span class="price">320 золотых</span>
+                            <span class="card-btn">В меню &rarr;</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 20px;">
+                <a href="menu.html" class="btn">Изучить весь гримуар (8 артефактов)</a>
+            </div>
+        </section>
+
+        <!-- РАЗДЕЛИТЕЛЬ -->
+        <div class="divider">
+            <span class="divider-icon">🖼️</span>
+        </div>
+
+        <!-- РАЗДЕЛ 4: ГАЛЕРЕЯ АТМОСФЕРЫ -->
+        <section style="margin-bottom: 50px;">
+            <div style="text-align: center;">
+                <div class="hero-badge">Фотохроника таверны</div>
+                <h2 class="section-title">Галерея <span>Потайной Лавки</span></h2>
+                <p class="section-subtitle">
+                    Погрузитесь в ламповую атмосферу: от алхимического бара до киберспортивных сражений.
+                </p>
+            </div>
+
+            <div class="gallery-grid">
+                <div class="gallery-item" onclick="openLightbox('cafe-bg.jpg', 'Главный зал таверны у камина')">
+                    <img src="cafe-bg.jpg" alt="Главный зал таверны">
+                    <div class="gallery-overlay">
+                        <div class="gallery-caption">Главный зал таверны</div>
+                        <div class="gallery-sub">Уютный полумрак, дубовые столы и теплый свет</div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" onclick="openLightbox('clarity-brew.jpg', 'Крафтовый бар зелий маны')">
+                    <img src="clarity-brew.jpg" alt="Бар зелий">
+                    <div class="gallery-overlay">
+                        <div class="gallery-caption">Алхимический бар</div>
+                        <div class="gallery-sub">Свежие зелья Clarity и авторский кофе</div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" onclick="openLightbox('lotus-brew.jpg', 'Священный лотос фонтана')">
+                    <img src="lotus-brew.jpg" alt="Lotus Brew подача">
+                    <div class="gallery-overlay">
+                        <div class="gallery-caption">Подача напитков</div>
+                        <div class="gallery-sub">Фирменная сервировка для настоящих героев</div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" onclick="openLightbox('rapier-cake.png', 'Десерты из Рошпита')">
+                    <img src="rapier-cake.png" alt="Divine Rapier десерт">
+                    <div class="gallery-overlay">
+                        <div class="gallery-caption">Кондитерская рапира</div>
+                        <div class="gallery-sub">Тысяча слоев карамели и золота</div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" onclick="openLightbox('mango-mousse.png', 'Зачарованное манго')">
+                    <img src="mango-mousse.png" alt="Манговый мусс">
+                    <div class="gallery-overlay">
+                        <div class="gallery-caption">Тропический мусс Манго</div>
+                        <div class="gallery-sub">+150 энергии в мозг перед финальной каткой</div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" onclick="openLightbox('roshan-cheese.jpg', 'Легендарный сыр Рошана')">
+                    <img src="roshan-cheese.jpg" alt="Сыр Рошана">
+                    <div class="gallery-overlay">
+                        <div class="gallery-caption">Roshan's Vault</div>
+                        <div class="gallery-sub">Любимый десерт сладкоежек и победителей</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- РАЗДЕЛИТЕЛЬ -->
+        <div class="divider">
+            <span class="divider-icon">🗺️</span>
+        </div>
+
+        <!-- РАЗДЕЛ 5: НАВИГАЦИЯ И КАРТА (МАЙКОП, ДИМИТРОВА 20) -->
+        <section class="map-section" id="navigation">
+            <div class="map-header">
+                <div>
+                    <div class="hero-badge" style="margin-bottom: 8px;">Координаты телепортации</div>
+                    <h3>Точка на карте: <span>г. Майкоп, ул. Димитрова, 20</span></h3>
+                </div>
+                <div>
+                    <a href="https://yandex.ru/maps/?pt=40.063598,44.621252&z=17&l=map" target="_blank" class="btn btn-sm">
+                        🗺️ Построить маршрут в Яндекс
+                    </a>
+                </div>
+            </div>
+
+            <!-- Встроенный интерактивный фрагмент карты с точкой на Майкоп, Димитрова 20 -->
+            <div class="map-container">
+                <iframe 
+                    title="Карта Потайной Лавки: Майкоп, ул. Димитрова, 20" 
+                    src="https://yandex.ru/map-widget/v1/?ll=40.063598%2C44.621252&z=16&pt=40.063598%2C44.621252%2Cpm2rdm" 
+                    allowfullscreen="true">
+                </iframe>
+            </div>
+
+            <div class="map-route-guide">
+                <div class="route-item">
+                    <h4>🚗 На личном транспорте</h4>
+                    <p>Удобный подъезд со стороны ул. Димитрова и ул. Чкалова. Бесплатная парковка перед входом в таверну.</p>
+                </div>
+                <div class="route-item">
+                    <h4>🚌 Общественным транспортом</h4>
+                    <p>Остановка «Улица Димитрова» (автобусы и маршрутные такси). Всего 2 минуты пешком до входа.</p>
+                </div>
+                <div class="route-item">
+                    <h4>🚶 Пешком от ориентиров</h4>
+                    <p>Рядом с жилым массивом «Черемушки». Вывеска с золотым логотипом «The Secret Shop Café» видна издалека.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- РАЗДЕЛИТЕЛЬ -->
+        <div class="divider">
+            <span class="divider-icon">📜</span>
+        </div>
+
+        <!-- РАЗДЕЛ 6: ФОРМА БРОНИРОВАНИЯ И ЗАКАЗА -->
+        <section class="order-section" id="booking">
+            <div style="text-align: center;">
+                <div class="hero-badge">Предзаказ и бронь</div>
+                <h2 class="section-title">Свиток Заказа <span>и Столика</span></h2>
+                <p class="section-subtitle">
+                    Забронируйте столик для вашей команды заранее или закажите любимые напитки к назначенному часу.
+                </p>
+            </div>
+
+            <form class="order-form" onsubmit="submitHeroBooking(event)">
+                <div class="form-group">
+                    <label class="form-label">Ваше Имя / Никнейм <span>*</span></label>
+                    <input type="text" class="form-input" id="bName" placeholder="Например: Артур / ShadowFiend" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Телефон или Telegram для связи <span>*</span></label>
+                    <input type="text" class="form-input" id="bContact" placeholder="+7 (999) 000-00-00 или @telegram" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Дата и время прибытия <span>*</span></label>
+                    <input type="datetime-local" class="form-input" id="bDateTime" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Размер пати</label>
+                    <select class="form-select" id="bParty">
+                        <option value="1">1 герой (Одиночный фарм)</option>
+                        <option value="2" selected>2 героя (Дуо на лайне)</option>
+                        <option value="3">3 героя (Трипла)</option>
+                        <option value="5">5 героев (Полный 5v5 сквад)</option>
+                        <option value="10">Клан / Гильдия (от 6 до 10 человек)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Желаемая зона</label>
+                    <select class="form-select" id="bZone">
+                        <option value="main">Главный зал у камина</option>
+                        <option value="gaming">Киберспортивная арена (ПК 240Hz)</option>
+                        <option value="lounge">VIP-зона Рошпита с консолями PS5</option>
+                        <option value="bar">У алхимической барной стойки</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Предзаказ блюд (по желанию)</label>
+                    <select class="form-select" id="bDish">
+                        <option value="none">Без предзаказа (выберу на месте)</option>
+                        <option value="lotus">Lotus Fountain Brew (260 золотых)</option>
+                        <option value="clarity">Clarity Blue Cold Brew (280 золотых)</option>
+                        <option value="salve">Healing Salve Elixir (250 золотых)</option>
+                        <option value="cheese">Roshan's Cheese (320 золотых)</option>
+                        <option value="mango">Enchanted Mango Mousse (210 золотых)</option>
+                        <option value="rapier">Divine Rapier Mille-feuille (450 золотых)</option>
+                        <option value="combo">Комбо Кэрри: Бургер BKB + Clarity (720 золотых)</option>
+                    </select>
+                </div>
+
+                <div class="form-group full-width">
+                    <label class="form-label">Комментарии и особые пожелания</label>
+                    <textarea class="form-textarea" id="bNotes" placeholder="Например: празднуем день рождения / хотим столик поближе к главному экрану..."></textarea>
+                </div>
+
+                <div class="form-submit-wrap">
+                    <button type="submit" class="btn" style="min-width: 300px;">
+                        📜 Запечатать свиток брони
+                    </button>
+                </div>
+            </form>
+        </section>
+
+
+    </main>
+
+    <!-- Лайтбокс для просмотра фото галереи -->
+    <div id="galleryLightbox" class="modal">
+        <div class="modal-content" style="max-width: 800px; padding: 20px; text-align: center;">
+            <span class="close-btn" onclick="closeModal('galleryLightbox')">&times;</span>
+            <div style="max-height: 500px; overflow: hidden; border-radius: 8px; margin-bottom: 15px;">
+                <img id="lightboxImg" src="" alt="Фото галереи" style="width: 100%; height: auto; max-height: 480px; object-fit: contain;">
+            </div>
+            <h3 id="lightboxCaption" style="font-family: var(--font-heading); color: var(--gold);"></h3>
+        </div>
+    </div>
+
+    <!-- Модальное окно подтверждения брони -->
+    <div id="bookingSuccessModal" class="modal">
+        <div class="modal-content" style="text-align: center;">
+            <span class="close-btn" onclick="closeModal('bookingSuccessModal')">&times;</span>
+            <div style="font-size: 50px; color: var(--gold); margin-bottom: 12px;">🏆✨</div>
+            <h2 class="modal-title">Свиток Брони Принят!</h2>
+            <p class="modal-desc" id="bookingSuccessText">
+                Посланник доставил ваш свиток хранителю Лавки. Столик в таверне зарезервирован по адресу <strong>г. Майкоп, ул. Димитрова, 20</strong>.
+            </p>
+            <div class="modal-buff" style="justify-content: center;">
+                ✨ Бафф за бронь: +10% к золоту на первый заказ!
+            </div>
+            <button class="btn" onclick="closeModal('bookingSuccessModal')">Отлично, выдвигаюсь!</button>
+        </div>
+    </div>
+
+    <!-- Подвал сайта -->
     <footer class="footer">
-        <p>&copy; 2026 The Secret Shop Café. Техническая поддержка: <a href="mailto:polikman07@bk.ru">polikman07@bk.ru</a></p>
+        <div class="footer-top">
+            <div class="footer-col">
+                <div class="logo-text" style="margin-bottom: 15px;">SECRET SHOP <span>CAFÉ</span></div>
+                <p>
+                    Атмосферная игровая таверна для геймеров, ценителей правильного кофе и качественных десертов. Место, где восстанавливается мана.
+                </p>
+                <p style="color: var(--gold); font-size: 13.5px;">
+                    📍 Адрес: г. Майкоп, ул. Димитрова, д. 20
+                </p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Навигация</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="menu.html">Гримуар Меню</a></li>
+                    <li><a href="about.html">О Лавке и Команде</a></li>
+                    <li><a href="contacts.html">Контакты и Карта</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Время рун</h4>
+                <p>Понедельник — Пятница:<br><strong style="color:#fff;">08:00 – 22:00</strong></p>
+                <p>Суббота — Воскресенье:<br><strong style="color:#fff;">10:00 – 00:00</strong></p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Связь с Лавкой</h4>
+                <p>Телефон: <strong>+7 (999) 322-13-37</strong></p>
+                <p>Почта: <a href="mailto:polikman07@bk.ru" class="mail-link">polikman07@bk.ru</a></p>
+                <div style="margin-top: 15px; display: flex; gap: 10px;">
+                    <a href="https://t.me" target="_blank" class="cart-btn" style="padding: 6px 12px; font-size: 12px;">Telegram</a>
+                    <a href="https://vk.com" target="_blank" class="cart-btn" style="padding: 6px 12px; font-size: 12px;">VK</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 The Secret Shop Café. Все права защищены. Разработано для победных каток.</p>
+            <p>Техническая поддержка: <a href="mailto:polikman07@bk.ru">polikman07@bk.ru</a></p>
+        </div>
     </footer>
+
+    <!-- Скрипты сайта -->
+    <script>
+        // Мобильное меню
+        const menuToggle = document.getElementById('menuToggle');
+        const mainNav = document.getElementById('mainNav');
+        if (menuToggle) {
+            menuToggle.addEventListener('click', () => {
+                mainNav.classList.toggle('open');
+            });
+        }
+
+        // Модальные окна
+        function openModal(modalId) {
+            const m = document.getElementById(modalId);
+            if (m) m.style.display = "block";
+        }
+
+        function closeModal(modalId) {
+            const m = document.getElementById(modalId);
+            if (m) m.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = "none";
+            }
+        }
+
+        window.onkeydown = function(event) {
+            if (event.key === "Escape") {
+                document.querySelectorAll('.modal').forEach(m => m.style.display = "none");
+            }
+        }
+
+        // Галерея Lightbox
+        function openLightbox(src, caption) {
+            const img = document.getElementById('lightboxImg');
+            const cap = document.getElementById('lightboxCaption');
+            if (img) img.src = src;
+            if (cap) cap.innerText = caption;
+            openModal('galleryLightbox');
+        }
+
+        // Бронирование
+        function submitHeroBooking(e) {
+            e.preventDefault();
+            const name = document.getElementById('bName').value;
+            const contact = document.getElementById('bContact').value;
+            const dt = document.getElementById('bDateTime').value;
+            const party = document.getElementById('bParty').options[document.getElementById('bParty').selectedIndex].text;
+            const zone = document.getElementById('bZone').options[document.getElementById('bZone').selectedIndex].text;
+            const dish = document.getElementById('bDish').options[document.getElementById('bDish').selectedIndex].text;
+
+            const textElem = document.getElementById('bookingSuccessText');
+            if (textElem) {
+                textElem.innerHTML = `Герой <strong>${name}</strong> (${contact})!<br>Бронь столика на <strong>${dt.replace('T', ' ')}</strong> успешно подтверждена.<br>Пати: <em>${party}</em> | Локация: <em>${zone}</em>.<br>Предзаказ: <em>${dish}</em>.<br><br>Ждем вас по адресу: <strong>г. Майкоп, ул. Димитрова, 20</strong>!`;
+            }
+            openModal('bookingSuccessModal');
+            e.target.reset();
+        }
+
+        // Таймер спавна рун
+        function startRuneTimers() {
+            setInterval(() => {
+                const now = new Date();
+                const totalSeconds = now.getMinutes() * 60 + now.getSeconds();
+
+                const bountyRemain = 180 - (totalSeconds % 180);
+                const bMin = String(Math.floor(bountyRemain / 60)).padStart(2, '0');
+                const bSec = String(bountyRemain % 60).padStart(2, '0');
+                const bEl = document.getElementById('bounty-timer');
+                if (bEl) bEl.innerText = `${bMin}:${bSec}`;
+
+                const wisdomRemain = 420 - (totalSeconds % 420);
+                const wMin = String(Math.floor(wisdomRemain / 60)).padStart(2, '0');
+                const wSec = String(wisdomRemain % 60).padStart(2, '0');
+                const wEl = document.getElementById('wisdom-timer');
+                if (wEl) wEl.innerText = `${wMin}:${wSec}`;
+            }, 1000);
+        }
+
+        startRuneTimers();
+    </script>
 </body>
 </html>

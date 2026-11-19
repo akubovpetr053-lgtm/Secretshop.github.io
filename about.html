@@ -1,74 +1,324 @@
-<html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
-    <title>The Secret Shop Café | О Лавке</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Secret Shop Café | О Лавке и Магах</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Живой таймер спавна рун -->
+    <div class="rune-timer-bar">
+        <div class="rune-item">
+            <span class="rune-dot bounty"></span>
+            <span>Руна Богатства: <strong id="bounty-timer">02:30</strong></span>
+        </div>
+        <div class="rune-item">
+            <span class="rune-dot wisdom"></span>
+            <span>Руна Мудрости: <strong id="wisdom-timer">05:15</strong></span>
+        </div>
+        <div class="rune-item">
+            <span>📍 Адрес: <strong>г. Майкоп, ул. Димитрова, 20</strong></span>
+        </div>
+    </div>
+
+    <!-- Шапка сайта -->
     <header class="header">
-        <div class="logo">SECRET SHOP <span>CAFÉ</span></div>
-        <nav class="nav">
+        <a href="index.html" class="logo-container">
+            <div class="logo-crest">S</div>
+            <div class="logo-text">SECRET SHOP <span>CAFÉ</span></div>
+        </a>
+
+        <button class="menu-toggle" id="menuToggle" aria-label="Открыть навигацию">☰</button>
+
+        <nav class="nav" id="mainNav">
             <a href="index.html">Главная</a>
             <a href="menu.html">Меню</a>
             <a href="about.html" class="active">О Лавке</a>
+            <a href="contacts.html">Контакты</a>
         </nav>
+
+        <div class="header-actions">
+            <a href="menu.html" class="cart-btn">
+                <span>📜 Гримуар Меню</span>
+            </a>
+        </div>
     </header>
 
-    <section class="about-section page-padding">
-        <h2 class="section-title">Легенда Потайной Лавки</h2>
-        
+    <!-- Основное содержимое -->
+    <main class="page-padding">
+        <!-- Заголовок страницы -->
+        <div style="text-align: center; margin-bottom: 40px;">
+            <div class="hero-badge">Лор и Основатели</div>
+            <h1 class="section-title">Легенда <span>Потайной Лавки</span></h1>
+            <p class="section-subtitle">
+                История о том, как любовь к Доте, жажда побед и страсть к хорошему кофе объединились под одной крышей.
+            </p>
+        </div>
+
+        <!-- Карточка основателя -->
         <div class="owner-container">
-            <img src="owner-avatar.jpg" alt="Владелец" class="owner-avatar">
+            <img src="owner-avatar.jpg" alt="Леонид Якубов - Основатель" class="owner-avatar">
             <div class="owner-info">
                 <h3>Леонид Якубов</h3>
                 <p class="role">Основатель и Хранитель Лавки</p>
                 <p class="lore-text">
-                    "Я начал искать идеальный рецепт зелья бодрости еще в те времена, когда Дота была картой в Варкрафте. Эта кофейня — не просто место, где наливают кофе. Это настоящий Secret Shop для тех, кому нужно восстановить ману перед тяжелым днем, бафнуть интеллект перед экзаменом или просто зачиллить в таверне с друзьями".
+                    «Я начал искать идеальный рецепт зелья бодрости еще в те далекие времена, когда Дота была пользовательской картой в Warcraft III Frozen Throne. Эта кофейня — не просто место, где наливают кофе. Это настоящий Secret Shop для тех, кому нужно восстановить запас маны перед тяжелым рабочим днем, бафнуть интеллект перед сложным экзаменом или просто зачиллить в ламповой таверне с верными тиммейтами».
                 </p>
             </div>
         </div>
 
-<h2 class="section-title" style="margin-top: 60px;">Наши Маги и Бариста</h2>
-        <div class="grid-container" style="margin-bottom: 60px;">
-            <div class="hero-card">
-                <div class="hero-avatar invoker"></div>
-                <h3>Invoker</h3>
-                <p class="role">Шеф-миксолог</p>
-                <p>Комбинирует сферы Quas (лед), Wex (воздушная пена) и Exort (горячий эспрессо) для создания идеального латте-арта.</p>
-            </div>
-            <div class="hero-card">
-                <div class="hero-avatar lina"></div>
-                <h3>Lina</h3>
-                <p class="role">Мастер обжарки</p>
-                <p>Использует заклинание Fiery Soul для мгновенной и идеальной обжарки кофейных зерен арабики до нужной кондиции.</p>
-            </div>
-            <div class="hero-card">
-                <div class="hero-avatar alchemist"></div>
-                <h3>Alchemist</h3>
-                <p class="role">Технолог сиропов</p>
-                <p>Его пассивная способность превращает обычные ингредиенты в чистое золото вкуса. Отвечает за секретные добавки.</p>
-            </div>
+        <!-- Разделитель -->
+        <div class="divider">
+            <span class="divider-icon">⚡</span>
         </div>
 
-        <div class="contacts-grid">
-            <div class="contact-card">
-                <h3>Где фармить кофе?</h3>
-                <p>г. Энск, ул. Пуш, дом 322<br>(Между Т2 и Т3 вышкой на миду)</p>
+        <!-- КОМАНДА МАГОВ И БАРИСТА -->
+        <section style="margin-bottom: 60px;">
+            <div style="text-align: center;">
+                <div class="hero-badge">Персонал высшего ранга</div>
+                <h2 class="section-title">Наши Маги <span>и Бариста</span></h2>
+                <p class="section-subtitle">
+                    Каждый наш сотрудник прошел суровую калибровку и владеет тайными заклинаниями кофейного мастерства.
+                </p>
             </div>
-            <div class="contact-card">
-                <h3>Время спавна рун (Часы работы)</h3>
-                <p>Пн-Пт: 08:00 - 22:00<br>Сб-Вс: 10:00 - 00:00</p>
-            </div>
-            <div class="contact-card">
-                <h3>Связь с богами (Поддержка)</h3>
-                <p>Сломался артефакт или кофе остыл?<br>Пиши: <a href="mailto:polikman07@bk.ru" class="mail-link">polikman07@bk.ru</a></p>
-            </div>
-        </div>
-    </section>
 
+            <div class="grid-container">
+                <!-- Карточка 1: Invoker -->
+                <div class="hero-card">
+                    <div class="hero-avatar invoker"></div>
+                    <h3>Invoker</h3>
+                    <p class="role">Шеф-миксолог и Магистр напитков</p>
+                    <p>Комбинирует сферы Quas (лед), Wex (воздушная молочная пена) и Exort (пламенный эспрессо) для создания идеального вкусового прокаста.</p>
+                </div>
+
+                <!-- Карточка 2: Lina -->
+                <div class="hero-card">
+                    <div class="hero-avatar lina"></div>
+                    <h3>Lina</h3>
+                    <p class="role">Мастер огненной обжарки зерен</p>
+                    <p>Использует заклинание Fiery Soul для мгновенной и точной обжарки отборной арабики. Ее кофе зажигает искру бодрости в каждом госте.</p>
+                </div>
+
+                <!-- Карточка 3: Alchemist -->
+                <div class="hero-card">
+                    <div class="hero-avatar alchemist"></div>
+                    <h3>Alchemist</h3>
+                    <p class="role">Главный технолог сиропов и зелий</p>
+                    <p>Пассивная способность Greevil's Greed превращает натуральные ягоды и фрукты в чистое золото вкуса. Отвечает за секретные авторские добавки.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Разделитель -->
+        <div class="divider">
+            <span class="divider-icon">🛡️</span>
+        </div>
+
+        <!-- ЦЕННОСТИ И ПРАВИЛА ЛАВКИ -->
+        <section style="margin-bottom: 60px;">
+            <div style="text-align: center;">
+                <div class="hero-badge">Кодекс чести</div>
+                <h2 class="section-title">Кодекс <span>Потайной Лавки</span></h2>
+                <p class="section-subtitle">
+                    Правила, по которым живет наша таверна с первого дня основания.
+                </p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon-box">🤝</div>
+                    <h3>Абсолютный Анти-тильт</h3>
+                    <p>Здесь запрещен любой токсичный флейм. Если у тиммейта не задалась игра — поддержи его чашкой горячего Healing Salve.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon-box">☕</div>
+                    <h3>Только свежий дроп</h3>
+                    <p>Никаких залежавшихся зерен. Мы варим только свежеобжаренный кофе и выпекаем десерты каждое утро до открытия лавки.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon-box">⚡</div>
+                    <h3>Скорость курьера</h3>
+                    <p>Ваш заказ готовится быстрее, чем летающий курьер долетает до мида под ускорением. Время дорого каждому герою.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon-box">🎖️</div>
+                    <h3>Чествование побед</h3>
+                    <p>Мы празднуем каждый ваш Triumph: от защиты диплома до поднятия ранга Титан в Доте. Награждаем сладкими бонусами!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Разделитель -->
+        <div class="divider">
+            <span class="divider-icon">🗺️</span>
+        </div>
+
+        <!-- БЛОК НАВИГАЦИИ И КОНТАКТОВ -->
+        <section class="contacts-wrapper" id="contacts">
+            <div style="text-align: center; margin-bottom: 30px;">
+                <div class="hero-badge">Координаты и связь</div>
+                <h2 class="section-title">Навигация и <span>Контакты</span></h2>
+                <p class="section-subtitle">
+                    Ждем вас в гости в столице Республики Адыгея. Заходите восстановить ману и обсудить мету патча!
+                </p>
+            </div>
+
+            <div class="contacts-grid">
+                <!-- Карточка 1: Адрес -->
+                <div class="contact-card">
+                    <div class="contact-icon">📍</div>
+                    <h3>Где фармить кофе?</h3>
+                    <p class="highlight-address">г. Майкоп, ул. Димитрова, д. 20</p>
+                    <p>Республика Адыгея, 385021<br>(Удобный заезд с парковкой, ориентир — вывеска Лавки)</p>
+                </div>
+
+                <!-- Карточка 2: Часы работы -->
+                <div class="contact-card">
+                    <div class="contact-icon">⏳</div>
+                    <h3>Время спавна рун (Часы)</h3>
+                    <p>Понедельник — Пятница:<br><strong>08:00 – 22:00</strong></p>
+                    <p style="margin-top: 8px;">Суббота — Воскресенье:<br><strong>10:00 – 00:00</strong> (до победного)</p>
+                </div>
+
+                <!-- Карточка 3: Связь -->
+                <div class="contact-card">
+                    <div class="contact-icon">📡</div>
+                    <h3>Связь со смотрителями</h3>
+                    <p>Прямой телепорт: <strong>+7 (999) 322-13-37</strong></p>
+                    <p style="margin-top: 8px;">
+                        Свиток поддержки:<br>
+                        <a href="mailto:polikman07@bk.ru" class="mail-link">polikman07@bk.ru</a>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Интерактивная карта: Майкоп, ул. Димитрова, 20 -->
+            <div class="map-section">
+                <div class="map-header">
+                    <div>
+                        <div class="hero-badge" style="margin-bottom: 6px;">Интерактивная карта</div>
+                        <h3>Точка телепортации: <span>г. Майкоп, ул. Димитрова, 20</span></h3>
+                    </div>
+                    <div>
+                        <a href="https://yandex.ru/maps/?pt=40.063598,44.621252&z=17&l=map" target="_blank" class="btn btn-sm">
+                            🗺️ Маршрут в Яндекс.Картах
+                        </a>
+                    </div>
+                </div>
+
+                <div class="map-container">
+                    <iframe 
+                        title="Карта Лавки: Майкоп, ул. Димитрова, 20" 
+                        src="https://yandex.ru/map-widget/v1/?ll=40.063598%2C44.621252&z=16&pt=40.063598%2C44.621252%2Cpm2rdm" 
+                        allowfullscreen="true">
+                    </iframe>
+                </div>
+
+                <div class="map-route-guide">
+                    <div class="route-item">
+                        <h4>🚗 На авто</h4>
+                        <p>Удобный подъезд по ул. Димитрова. Рядом просторная бесплатная парковка для транспорта героев.</p>
+                    </div>
+                    <div class="route-item">
+                        <h4>🚌 Общественный транспорт</h4>
+                        <p>Остановка «Улица Димитрова» (автобусы №1, 2, 14, маршрутные такси). 2 минуты спокойным шагом.</p>
+                    </div>
+                    <div class="route-item">
+                        <h4>🚶 Пешие координаты</h4>
+                        <p>Микрорайон «Черемушки». Наша светящаяся золотая вывеска видна даже ночью сквозь туман войны.</p>
+                    </div>
+                </div>
+            </div>
+
+
+        </section>
+    </main>
+
+    <!-- Подвал сайта -->
     <footer class="footer">
-        <p>&copy; 2026 The Secret Shop Café. Разработано Безумцем.</p>
+        <div class="footer-top">
+            <div class="footer-col">
+                <div class="logo-text" style="margin-bottom: 15px;">SECRET SHOP <span>CAFÉ</span></div>
+                <p>
+                    Атмосферная игровая таверна для геймеров, ценителей правильного кофе и качественных десертов. Место, где восстанавливается мана.
+                </p>
+                <p style="color: var(--gold); font-size: 13.5px;">
+                    📍 Адрес: г. Майкоп, ул. Димитрова, д. 20
+                </p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Навигация</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="menu.html">Гримуар Меню</a></li>
+                    <li><a href="about.html">О Лавке и Команде</a></li>
+                    <li><a href="contacts.html">Контакты и Карта</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Время рун</h4>
+                <p>Понедельник — Пятница:<br><strong style="color:#fff;">08:00 – 22:00</strong></p>
+                <p>Суббота — Воскресенье:<br><strong style="color:#fff;">10:00 – 00:00</strong></p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Связь с Лавкой</h4>
+                <p>Телефон: <strong>+7 (999) 322-13-37</strong></p>
+                <p>Почта: <a href="mailto:polikman07@bk.ru" class="mail-link">polikman07@bk.ru</a></p>
+                <div style="margin-top: 15px; display: flex; gap: 10px;">
+                    <a href="https://t.me" target="_blank" class="cart-btn" style="padding: 6px 12px; font-size: 12px;">Telegram</a>
+                    <a href="https://vk.com" target="_blank" class="cart-btn" style="padding: 6px 12px; font-size: 12px;">VK</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 The Secret Shop Café. Разработано Безумцем. Все права защищены.</p>
+            <p>Техническая поддержка: <a href="mailto:polikman07@bk.ru">polikman07@bk.ru</a></p>
+        </div>
     </footer>
+
+    <!-- Скрипты сайта -->
+    <script>
+        // Мобильное меню
+        const menuToggle = document.getElementById('menuToggle');
+        const mainNav = document.getElementById('mainNav');
+        if (menuToggle) {
+            menuToggle.addEventListener('click', () => {
+                mainNav.classList.toggle('open');
+            });
+        }
+
+        // Таймер спавна рун
+        function startRuneTimers() {
+            setInterval(() => {
+                const now = new Date();
+                const totalSeconds = now.getMinutes() * 60 + now.getSeconds();
+
+                const bountyRemain = 180 - (totalSeconds % 180);
+                const bMin = String(Math.floor(bountyRemain / 60)).padStart(2, '0');
+                const bSec = String(bountyRemain % 60).padStart(2, '0');
+                const bEl = document.getElementById('bounty-timer');
+                if (bEl) bEl.innerText = `${bMin}:${bSec}`;
+
+                const wisdomRemain = 420 - (totalSeconds % 420);
+                const wMin = String(Math.floor(wisdomRemain / 60)).padStart(2, '0');
+                const wSec = String(wisdomRemain % 60).padStart(2, '0');
+                const wEl = document.getElementById('wisdom-timer');
+                if (wEl) wEl.innerText = `${wMin}:${wSec}`;
+            }, 1000);
+        }
+
+        startRuneTimers();
+    </script>
 </body>
 </html>
